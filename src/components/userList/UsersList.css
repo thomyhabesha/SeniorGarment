@@ -1,0 +1,38 @@
+
+
+.table-container {
+    max-height: 400px; /* Set a maximum height for the container */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Slightly rounded corners */
+    margin-top: 20px; /* Space above the table */
+    background-color: white; /* White background for the table */
+    height: 350px;
+}
+
+.user-table {
+    width: 100%; /* Make the table take the full width */
+    border-collapse: collapse; /* Collapse borders for a cleaner look */
+    font-family: 'Arial', sans-serif; /* Formal font style */
+}
+
+.user-table th, .user-table td {
+    padding: 12px 15px; /* Increased padding for better spacing */
+    text-align: left; /* Align text to the left */
+    border-bottom: 1px solid #ddd; /* Add a bottom border to each row */
+}
+
+.user-table th {
+    background-color: #1FA5FF;; /* Blue background for the header */
+    color: white; /* White text color for the header */
+    font-weight: bold; /* Bold text for header */
+}
+
+.user-table tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light gray for even rows */
+}
+
+.user-table tr:hover {
+    background-color: #e9ecef; /* Slightly darker gray on hover */
+    cursor: pointer; /* Change cursor on hover */
+}

@@ -1,0 +1,52 @@
+.registerForm{
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    
+    border-radius: 13px;
+}
+.registerForm form{
+    display: grid;
+    grid-template-columns: 520px 520px;
+    grid-template-rows: 80px 80px 80px;
+    padding: 28px 20px;
+    align-items: center;
+}
+
+.registerForm form .input {
+    padding: 10px 10px 18px 10px;
+    outline: none;
+    font-size: 14px;
+    width:400px;
+    margin-bottom: 20px;
+    border: none; /* Remove border */
+    border-bottom: 1px solid #c1c1c1; /* Optional: subtle underline border */
+    background-color: transparent; /* Make background transparent */
+    color: #8e8e8e; /* Text color */
+  }
+  .role-select {
+    margin: 20px 0; /* Add margin for spacing */
+}
+
+.role-select label {
+    display: block; /* Make label block to have space above the dropdown */
+    margin-bottom: 5px; /* Space between label and dropdown */
+}
+
+.role-select select {
+    padding: 10px; /* Padding for the dropdown */
+    border: none; /* Rounded corners */
+    width: 100%; /* Full width */
+    max-width: 300px; /* Limit maximum width */
+    padding: 10px 10px 18px 10px;
+    border-bottom: 1px solid #c1c1c1; /* Optional: subtle underline border */
+    background-color: transparent; /* Make background transparent */
+  
+}
+  .registerForm button{
+    background-color: #1FA5FF;
+    align-self: flex-end;
+    margin-right: 40px;
+    padding: 6px 18px;
+  }
+  
