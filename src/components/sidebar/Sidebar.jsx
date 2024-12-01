@@ -24,7 +24,9 @@ return(
             <h3>Biruk Mekonen</h3>
             <p>{user==="productionmgr"? "Production manager": "Admin"}</p>
           </div>
-        </div>
+        </div> 
+        {/* conditional rendering (if,else in other words ) */}
+        {/* if condition */}
        { user==="productionmgr"?
         <ul className="menu">
             <li className="menu-item active"><AiOutlineDashboard className="sideIcons"/><Link to='/DashboardProdction' > Dashboard</Link></li>
@@ -33,7 +35,7 @@ return(
             <li className="menu-item"><GiTalk className="sideIcons"/><Link to=''> communication</Link></li>
             <li className="menu-item"><CiSettings className="sideIcons"/><Link to='/ProdSettings'> Settings</Link></li>
           </ul>
-
+          // if-else condition
           : user==="admin"?
            <ul className="menu">
 
@@ -43,6 +45,7 @@ return(
             <li className="menu-item"><MdModeEditOutline className="sideIcons"/><Link to='/UserMng'> User Management</Link></li>
             <li className="menu-item"><CiSettings className="sideIcons"/><Link to='/AdminSettings'> Settings</Link></li>
           </ul>
+          // else condition
           :
           ''
           }
