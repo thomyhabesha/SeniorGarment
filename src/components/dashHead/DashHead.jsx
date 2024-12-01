@@ -2,13 +2,14 @@ import React from "react";
 import './DashHead.css'
 
 import AnalyticImage from '../../assets/garmentImg/Increase.png'
-const DashHead=({heading})=>{
+const DashHead=({heading, user})=>{
     return(
 <div className="DashboardHead">
         <header>
           <h2>{heading}</h2>
         </header>
 
+       {user ==='admin'?
         <div className="user-count-card-cont">
 
         <div className="user-count-card">
@@ -17,6 +18,8 @@ const DashHead=({heading})=>{
         </div>
         <img src={AnalyticImage} alt='' /> 
         </div>
+        :''
+        }
 
         </div>
 

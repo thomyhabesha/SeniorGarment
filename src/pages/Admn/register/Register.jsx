@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./Register.css";
-import Sidebar from '../../components/sidebar/Sidebar'
-import DashHead from '../../components/dashHead/DashHead'
+import Sidebar from '../../../components/sidebar/Sidebar'
+import DashHead from '../../../components/dashHead/DashHead'
 
 function Register() {
   const [role, setRole] = useState('');
@@ -12,7 +12,7 @@ function Register() {
 
   return (
     <div className="dashboard-container">
-      <Sidebar/>
+      <Sidebar user="admin"/>
       
       <main className="main-content">
         <DashHead

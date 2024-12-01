@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./UserMng.css";
-import Sidebar from '../../components/sidebar/Sidebar';
-import DashHead from '../../components/dashHead/DashHead';
+import Sidebar from '../../../components/sidebar/Sidebar';
+import DashHead from '../../../components/dashHead/DashHead';
 
 function UserMng() {
   const [users, setUsers] = useState([

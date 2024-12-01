@@ -1,9 +1,9 @@
 import React, {useState} from "react";
-import "./Settings.css";
-import Sidebar from '../../components/sidebar/Sidebar'
-import DashHead from '../../components/dashHead/DashHead'
+import "./ProdSettings.css";
+import Sidebar from '../../../components/sidebar/Sidebar'
+import DashHead from '../../../components/dashHead/DashHead'
 
-function Settings() {
+function ProdSettings() {
   const [role, setRole] = useState('');
 
   const handleChange = (event) => {
@@ -12,16 +12,17 @@ function Settings() {
 
   return (
     <div className="dashboard-container">
-      <Sidebar/>
+      <Sidebar user="productionmgr"/>
       
       <main className="main-content">
         <DashHead
         heading='Settings'
         />
         <section className="container-section">
-            <h3>Modify Account</h3>
+            <h3>Modify Accountkkkk</h3>
         <div className="registerForm">
             <form>
+
           <input type="First Name" placeholder="First Name" className="input" />
           <input type="Last Name" placeholder="Last Name" className="input" />
          <input type="Email" placeholder="Email" className="input" />
@@ -38,4 +39,4 @@ function Settings() {
   );
 }
 
-export default Settings;
+export default ProdSettings;

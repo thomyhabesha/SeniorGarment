@@ -2,20 +2,26 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Login";
-import Dashboard from "./pages/dashboard/Dashboard";
-import Register from "./pages/register/Register";
-import UserMng from "./pages/userMng/UserMng";
-import Settings from "./pages/settings/Settings";
+import DashboardAdmin from "./pages/Admn/dashboard/DashboardAdmin";
+import DashboardProdction from "./pages/productionMgr/dashboard/DashboardProdction";
+import WorkflowVisualize from "./pages/productionMgr/workflowVisualize/WorkflowVisualize";
+import Register from "./pages/Admn/register/Register";
+import UserMng from "./pages/Admn/userMng/UserMng";
+import AdminSettings from "./pages/Admn/settings/AdminSettings";
+import ProdSettings from "./pages/productionMgr/settings/ProdSettings";
 import './App.css';
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/DashboardAdmin" element={<DashboardAdmin />} />
+        <Route path="/DashboardProdction" element={<DashboardProdction />} />
+        <Route path="/WorkflowVisualize" element={<WorkflowVisualize />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/UserMng" element={<UserMng />} />
-        <Route path="/Settings" element={<Settings />} />
+        <Route path="/AdminSettings" element={<AdminSettings />} />
+        <Route path="/ProdSettings" element={<ProdSettings />} />
       </Routes>
     </Router>
   );

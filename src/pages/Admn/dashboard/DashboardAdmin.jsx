@@ -1,14 +1,14 @@
 import React from "react";
 import "./Dashboard.css";
-import Sidebar from '../../components/sidebar/Sidebar'
-import DashHead from '../../components/dashHead/DashHead'
+import Sidebar from '../../../components/sidebar/Sidebar'
+import DashHead from '../../../components/dashHead/DashHead'
 
-function Dashboard() {
+function DashboardAdmin() {
   return (
     <div className="dashboard-container bg-slate-300">
-      <Sidebar />
+      <Sidebar user="admin" />
       <main className="main-content">
-        <DashHead heading="User Management" />
+        <DashHead heading="Dashboard" user="admin"/>
         <section className="container-section">
           <h3>Registered</h3>
           <div className="table-container">
@@ -92,4 +92,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default DashboardAdmin;
