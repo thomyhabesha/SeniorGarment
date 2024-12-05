@@ -10,6 +10,7 @@ function Register() {
       setRole(event.target.value);
   };
 
+  
   return (
     <div className="dashboard-container">
       <Sidebar user="admin"/>
@@ -18,7 +19,10 @@ function Register() {
         <DashHead
         heading='Register'
         />
+
+        
         <section className="container-section">
+           
             <h3>Register new user</h3>
         <div className="registerForm">
             <form>

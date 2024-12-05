@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
+
+
 const Login = () => {
 
   const [email, setemal] =useState('')
-    
+   
 const navigate=useNavigate();
     const handleLogin = () => {
         if (email==='productionmgr@gmail.com'){
@@ -25,7 +27,7 @@ const navigate=useNavigate();
 
   return (
     <div className="container">
-      <div className="overlay"></div>
+      <div className="overlay">
       <div className="loginBox">
       <div className="loginBoxTop">
         <h2 className="title">Login</h2>
@@ -44,6 +46,7 @@ const navigate=useNavigate();
         
         <a href="#" className="forgotPassword">Forgot password?</a>
       </div>
+    </div>
     </div>
   );
 };

@@ -1,0 +1,153 @@
+.prodcntainer-section{
+   
+    gap:80px;
+    max-height: 450px; /* Adjust this to set the scrollable area height */
+  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-x: hidden;
+  padding: 0px 20px;
+  
+  }
+  
+   .prodwrap{
+    display: flex;
+    flex-direction: column;
+    gap:8px
+   }
+
+/* Table Styling */
+
+.productionDash td {
+  color: black;
+}
+
+.productionDash th {
+  background-color: #1f2937; /* Dark slate background */
+  color: #fff; /* White text for headers */
+  text-transform: uppercase;
+}
+
+
+.productionDash td:first-child {
+  font-weight: bold; /* Highlight the first column */
+}
+
+/* Table Wrapper for Scrollable Body */
+.table-wrapper {
+  max-height: 420px; /* Adjust this to set the scrollable area height */
+  overflow-y: auto; /* Enables vertical scrolling */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+ 
+}
+.table-wrapper:nth-child(2), .table-wrapper:nth-child(3) {
+  margin-top: 80px;
+}
+.productionDash th,
+.productionDash td {
+  border: 1px solid #ddd;
+  padding: 12px;
+}
+
+.productionDash {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+}
+
+table.productionDash th,
+table.productionDash td {
+  padding: 12px;
+}
+
+
+
+
+.productionDash tr td:last-child{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.productionDash tr td:last-child button{
+  background-color: #1c9b03;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  color: white;
+}
+    
+   .tableProdaAction{
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-end;
+    
+    margin-right: 30px;
+   }
+   .tableProdaAction button{
+    padding: 4px 10px;
+    color: white;
+    border-radius: 12px;
+   }
+   .tableProdaAction button:nth-child(1){
+    background-color: #2a32d1;
+}
+.tableProdaAction button:nth-child(2){
+       background-color: #d22525
+   }
+
+
+   /*popup*/
+
+   .registerForm{
+    display: flex;
+    flex-direction: column;
+    border-radius: 13px;
+    position:absolute;
+    top:10%;
+    left:15%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: -8px 8px 13px rgba(78, 78, 78, 0.655);
+}
+.registerForm form{
+    display: grid;
+    grid-template-columns: 520px 520px;
+    grid-template-rows: 70px 70px 70px;
+    padding: 28px 20px;
+    align-items: center;
+}
+
+.registerForm form .input {
+    padding: 10px 10px 18px 10px;
+    outline: none;
+    font-size: 14px;
+    width:400px;
+    margin-bottom: 20px;
+    border: none; /* Remove border */
+    border-bottom: 1px solid #c1c1c1; /* Optional: subtle underline border */
+    background-color: transparent; /* Make background transparent */
+    color: #8e8e8e; /* Text color */
+  }
+  .role-select {
+    margin: 20px 0; /* Add margin for spacing */
+}
+
+.role-select label {
+    display: block; /* Make label block to have space above the dropdown */
+    margin-bottom: 5px; /* Space between label and dropdown */
+}
+
+.role-select select {
+    padding: 10px; /* Padding for the dropdown */
+    border: none; /* Rounded corners */
+    width: 100%; /* Full width */
+    max-width: 300px; /* Limit maximum width */
+    padding: 10px 10px 18px 10px;
+    border-bottom: 1px solid #c1c1c1; /* Optional: subtle underline border */
+    background-color: transparent; /* Make background transparent */
+  
+}
+  .registerForm button{
+    background-color: #1FA5FF;
+    align-self: flex-end;
+    margin-right: 40px;
+    padding: 6px 18px;
+  }
+  

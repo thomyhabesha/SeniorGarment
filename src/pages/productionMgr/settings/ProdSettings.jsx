@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import "./ProdSettings.css";
 import Sidebar from '../../../components/sidebar/Sidebar'
-import DashHead from '../../../components/dashHead/DashHead'
+import ProdDashhead from '../../../components/ProdDashhead/ProdDashhead'
 
 function ProdSettings() {
   const [role, setRole] = useState('');
@@ -15,11 +15,9 @@ function ProdSettings() {
       <Sidebar user="productionmgr"/>
       
       <main className="main-content">
-        <DashHead
-        heading='Settings'
-        />
+      <ProdDashhead heading="Dashboard" user="productionmgr"/>
         <section className="container-section">
-            <h3>Modify Accountkkkk</h3>
+            <h3>Modify Account</h3>
         <div className="registerForm">
             <form>
 

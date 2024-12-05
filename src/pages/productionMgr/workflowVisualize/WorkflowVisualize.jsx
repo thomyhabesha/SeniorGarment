@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import "./WorkflowVisualize.css";
 import Sidebar from '../../../components/sidebar/Sidebar'
-import DashHead from '../../../components/dashHead/DashHead'
+import ProdDashhead from '../../../components/ProdDashhead/ProdDashhead'
 
 function WorkflowVisualize() {
 
   const [popup, setpopup]=useState(false)
+  //const name = "elsabet"
 
-
+  
+  
   return (
     <div className="dashboard-container bg-slate-300">
       <Sidebar user="productionmgr" />
       <main className="main-content">
-        <DashHead heading="Dashboard" />
+      <ProdDashhead heading="Dashboard" user="productionmgr"/>
          <section className="container-section prodcntainer-section">
          <div className="table-wrapper">
              <table className="prodDash">

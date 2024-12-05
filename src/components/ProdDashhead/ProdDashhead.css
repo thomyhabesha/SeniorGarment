@@ -1,0 +1,19 @@
+.DashboardHead{
+    display: flex;
+    align-items: center;
+    gap:20px;
+
+}
+.prodHead{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    padding: 0 15px;
+}
+.user-count-card-cont1{
+    background-color: #4635fa; 
+}
+.user-count-card-cont2{
+    background-color: #fb4a4a; 
+}
+

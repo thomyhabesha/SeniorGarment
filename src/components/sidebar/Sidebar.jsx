@@ -25,10 +25,11 @@ return(
             <p>{user==="productionmgr"? "Production manager": "Admin"}</p>
           </div>
         </div>
-       { user==="productionmgr"?
+
+       { user==="productionmgr" ?
         <ul className="menu">
             <li className="menu-item active"><AiOutlineDashboard className="sideIcons"/><Link to='/DashboardProdction' > Dashboard</Link></li>
-            <li className="menu-item"><RiCalendarScheduleLine className="sideIcons"/><Link to='' >Production schedule</Link></li>
+            <li className="menu-item"><RiCalendarScheduleLine className="sideIcons"/><Link to='/ProductionSchedule' >Production schedule</Link></li>
             <li className="menu-item"><TiFlowMerge className="sideIcons"/><Link to='/WorkflowVisualize'> Workflow</Link></li>
             <li className="menu-item"><GiTalk className="sideIcons"/><Link to=''> communication</Link></li>
             <li className="menu-item"><CiSettings className="sideIcons"/><Link to='/ProdSettings'> Settings</Link></li>

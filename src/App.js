@@ -9,9 +9,12 @@ import Register from "./pages/Admn/register/Register";
 import UserMng from "./pages/Admn/userMng/UserMng";
 import AdminSettings from "./pages/Admn/settings/AdminSettings";
 import ProdSettings from "./pages/productionMgr/settings/ProdSettings";
+import ProductionSchedule from "./pages/productionMgr/productionSchedule/ProductionSchedule";
 import './App.css';
+
 function App() {
   return (
+    <div className="App">
     <Router>
       <Routes>
         <Route path="/" element={<Login />} />
@@ -22,9 +25,12 @@ function App() {
         <Route path="/UserMng" element={<UserMng />} />
         <Route path="/AdminSettings" element={<AdminSettings />} />
         <Route path="/ProdSettings" element={<ProdSettings />} />
+        <Route path="/ProductionSchedule" element={<ProductionSchedule />} />
       </Routes>
     </Router>
+    </div>
   );
 }
 
 export default App;
+

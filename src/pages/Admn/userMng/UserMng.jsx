@@ -58,7 +58,7 @@ function UserMng() {
 
   return (
     <div className="dashboard-container">
-      <Sidebar />
+      <Sidebar user="admin"/>
       
       <main className="main-content">
         <DashHead heading='User Management' />
