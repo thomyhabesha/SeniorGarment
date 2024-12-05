@@ -33,7 +33,7 @@ function Order() {
           <input type="email" className="input" />
           </div>
 
-                 <div>
+                 <div className="textmessage">
                     Report
                     <textarea className="input" />
                     </div>
@@ -41,7 +41,7 @@ function Order() {
         
           
             </form>
-  <button className="button">Order</button>
+  <button className="button">Report</button>
         </div>
         </section>
 

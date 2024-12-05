@@ -53,7 +53,7 @@ return(
            <ul className="menu">
 
 
-            <li className="menu-item active"><AiOutlineDashboard className="sideIcons"/><Link to='/DashboardAdmin' > Dashboard</Link></li>
+            <li className="menu-item active"><AiOutlineDashboard className="sideIcons"/><Link to='/DashboardInventory' > Dashboard</Link></li>
             <li className="menu-item"><CiBoxList className="sideIcons"/><Link to='/Inventorylist' >Inventory list</Link></li>
             <li className="menu-item"><MdModeEditOutline className="sideIcons"/><Link to='/Order'>Order</Link></li>
             <li className="menu-item"><MdOutlineReport className="sideIcons"/><Link to='/Report'>Report</Link></li>
