@@ -7,9 +7,7 @@ import AnalyticImage from '../../assets/garmentImg/Increase.png'
 const ProdDashhead=({heading, user})=>{
     return(
 <div className="DashboardHead">
-        <header>
-          <h2>{heading}</h2>
-        </header>
+       
 
        {user ==='admin'?
         <div className="user-count-card-cont">
@@ -21,7 +19,7 @@ const ProdDashhead=({heading, user})=>{
         <img src={AnalyticImage} alt='' /> 
         </div>
         :
-       user ==='productionmgr'?
+       user ==='inventory'?
        <div className="prodHead">
 
 {/*first heading */}

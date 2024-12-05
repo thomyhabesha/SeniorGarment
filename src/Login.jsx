@@ -15,8 +15,8 @@ const navigate=useNavigate();
         }else if(email==='admin@gmail.com'){
           navigate("/DashboardAdmin");
           
-        }else{
-          navigate("/dashboard");
+        }else if(email==='inventory@gmail.com'){
+          navigate("/DashboardInventory");
 
         }
       };

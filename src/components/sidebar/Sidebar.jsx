@@ -8,6 +8,10 @@ import { FaUser } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { TiFlowMerge } from "react-icons/ti";
 import { RiCalendarScheduleLine } from "react-icons/ri";
+import { MdOutlineReport } from "react-icons/md";
+
+import { CiBoxList } from "react-icons/ci";
+
 import { GiTalk } from "react-icons/gi";
 
 import {Link} from 'react-router-dom'
@@ -22,7 +26,7 @@ return(
           <span className="user-icon"><FaUser color="rgb(210, 210, 210)"/></span>
           <div className="user-details">
             <h3>Biruk Mekonen</h3>
-            <p>{user==="productionmgr"? "Production manager": "Admin"}</p>
+            <p>{user==="productionmgr"? "Production manager": "Inventory manager"}</p>
           </div>
         </div>
 
@@ -43,6 +47,17 @@ return(
             <li className="menu-item"><IoMdAdd className="sideIcons"/><Link to='/Register' >Register</Link></li>
             <li className="menu-item"><MdModeEditOutline className="sideIcons"/><Link to='/UserMng'> User Management</Link></li>
             <li className="menu-item"><CiSettings className="sideIcons"/><Link to='/AdminSettings'> Settings</Link></li>
+          </ul>
+          
+          : user==="inventory"?
+           <ul className="menu">
+
+
+            <li className="menu-item active"><AiOutlineDashboard className="sideIcons"/><Link to='/DashboardAdmin' > Dashboard</Link></li>
+            <li className="menu-item"><CiBoxList className="sideIcons"/><Link to='/Inventorylist' >Inventory list</Link></li>
+            <li className="menu-item"><MdModeEditOutline className="sideIcons"/><Link to='/Order'>Order</Link></li>
+            <li className="menu-item"><MdOutlineReport className="sideIcons"/><Link to='/Report'>Report</Link></li>
+            <li className="menu-item"><CiSettings className="sideIcons"/><Link to='/AdminSettings'>Settings</Link></li>
           </ul>
           :
           ''

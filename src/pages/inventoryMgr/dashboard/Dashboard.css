@@ -1,0 +1,86 @@
+.main-content{
+    overflow-y: hidden;
+    height: 100vh;
+}
+header{
+    display: flex;
+    justify-content: flex-start;
+}
+.mainH2  {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+.container-section{
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+.productionChart{
+    width:550px;
+    height: 100%;
+}
+.productionChart img{
+    height: 100%;
+    width:100%
+}
+.productionProgressBar{
+    width:300px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:13px;
+    font-size: 1.3rem;
+}
+.InveDashTop{
+    display: flex;
+    justify-content: space-between;
+    width:100%;
+    overflow-y: hidden;
+}
+
+
+.productionDash td {
+    color: black;
+    padding: 30;
+  }
+  
+  .productionDash th {
+    background-color: #1f2937; /* Dark slate background */
+    color: #fff; /* White text for headers */
+    text-transform: uppercase;
+  }
+  
+  
+  .productionDash td:first-child {
+    font-weight: bold; /* Highlight the first column */
+  }
+  
+  /* Table Wrapper for Scrollable Body */
+  .table-wrapper {
+    max-height: 420px; /* Adjust this to set the scrollable area height */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+   
+  }
+ 
+  .productionDash th,
+  .productionDash td {
+    border: 1px solid #ddd;
+    padding: 30px;
+  }
+  
+  .productionDash {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+  }
+  
+  .productionDash th,
+  .productionDash td {
+    padding: 32px;
+  }
+  
+  

@@ -1,0 +1,60 @@
+
+.productionDash td {
+    color: black;
+  }
+  
+  .productionDash th {
+    background-color: #1f2937; /* Dark slate background */
+    color: #fff; /* White text for headers */
+    text-transform: uppercase;
+  }
+  
+  
+  .productionDash td:first-child {
+    font-weight: bold; /* Highlight the first column */
+  }
+  
+  /* Table Wrapper for Scrollable Body */
+  .table-wrapper {
+    max-height: 420px; /* Adjust this to set the scrollable area height */
+    overflow-y: auto; /* Enables vertical scrolling */
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+   
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    
+  }
+  .table-wrapper .filter{
+    padding: 15px 25px;
+    display: flex;
+    align-items: center;
+    gap:18px;
+  }
+  .table-wrapper .filter input{
+    background-color:#eeeeee;
+    border: 16px;
+    padding: 3px 8px;
+    font-size: 0.8rem;
+  }
+  .table-wrapper:nth-child(2), .table-wrapper:nth-child(3) {
+    margin-top: 80px;
+  }
+  .productionDash th,
+  .productionDash td {
+    border: 1px solid #ddd;
+    padding: 12px;
+  }
+  
+  .productionDash {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+  }
+  
+  table.productionDash th,
+  table.productionDash td {
+    padding: 12px;
+  }
+  
+  
