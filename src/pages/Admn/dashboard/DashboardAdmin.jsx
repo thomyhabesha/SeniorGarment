@@ -1,16 +1,36 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./Dashboard.css";
-import Sidebar from '../../../components/sidebar/Sidebar'
-import DashHead from '../../../components/dashHead/DashHead'
+import Sidebar from '../../../components/sidebar/Sidebar';
+import DashHead from '../../../components/dashHead/DashHead';
 
 function DashboardAdmin() {
+  const [users, setUsers] = useState([]); // State to hold user data
+  const [error, setError] = useState(null); // Error state
+
+  // Fetch users from the backend
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/getusers");
+        setUsers(response.data); // Set fetched user data
+      } catch (err) {
+        console.error("Error fetching users:", err);
+        setError("Failed to fetch users.");
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   return (
     <div className="dashboard-container bg-slate-300">
       <Sidebar user="admin" />
       <main className="main-content">
-        <DashHead heading="Dashboard" user="admin"/>
+        <DashHead heading="Dashboard" user="admin" />
         <section className="container-section">
-          <h3>Registered</h3>
+          <h3>Registered Users</h3>
+          {error && <p style={{ color: "red" }}>{error}</p>}
           <div className="table-container">
             <table className="user-table">
               <thead>
@@ -23,66 +43,23 @@ function DashboardAdmin() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>PR02</td>
-                  <td>Tamene Natneal</td>
-                  <td>natta22@gmail.com</td>
-                  <td>Production Manager</td>
-                  <td>0932912092</td>
-                </tr>
-                <tr>
-                  <td>IN120</td>
-                  <td>Tamene Natneal</td>
-                  <td>natta22@gmail.com</td>
-                  <td>Inventory Manager</td>
-                  <td>0922902072</td>
-                </tr>
-                <tr>
-                  <td>EM01</td>
-                  <td>Tamene Natneal</td>
-                  <td>natta22@gmail.com</td>
-                  <td>Employee</td>
-                  <td>0903091092</td>
-                </tr>
-                <tr>
-                  <td>EM02</td>
-                  <td>Tamene Natneal</td>
-                  <td>natta22@gmail.com</td>
-                  <td>Employee</td>
-                  <td>0912239900</td>
-                </tr>
-
-                <tr>
-                  <td>EM03</td>
-                  <td>kidus haile</td>
-                  <td>nkidh2@gmail.com</td>
-                  <td>Employee</td>
-                  <td>0912019900</td>
-                </tr>
-
-                <tr>
-                  <td>EM04</td>
-                  <td>nahom said</td>
-                  <td>saidna00@gmail.com</td>
-                  <td>Employee</td>
-                  <td>0911019700</td>
-                </tr>
-
-                <tr>
-                  <td>EM05</td>
-                  <td>helen telaun</td>
-                  <td>nkidh2@gmail.com</td>
-                  <td>Employee</td>
-                  <td>0912019900</td>
-                </tr>
-
-                <tr>
-                  <td>EM06</td>
-                  <td>nahom said</td>
-                  <td>saidna00@gmail.com</td>
-                  <td>Employee</td>
-                  <td>0911019700</td>
-                </tr>
+                {users.length > 0 ? (
+                  users.map((user) => (
+                    <tr key={user.UserID}>
+                      <td>{user.UserID}</td>
+                      <td>{user.Fname} {user.Lname}</td>
+                      <td>{user.email}</td>
+                      <td>{user.user_role}</td>
+                      <td>{user.contact_no}</td>
+                    </tr>
+                  ))
+                ) : (
+                  <tr>
+                    <td colSpan="5" style={{ textAlign: "center" }}>
+                      No users found.
+                    </td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </div>

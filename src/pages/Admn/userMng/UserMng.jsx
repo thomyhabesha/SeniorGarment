@@ -1,67 +1,74 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./UserMng.css";
 import Sidebar from '../../../components/sidebar/Sidebar';
 import DashHead from '../../../components/dashHead/DashHead';
+import axios from "axios";
 
 function UserMng() {
-  const [users, setUsers] = useState([
-    { id: 'PR02', name: 'Tamene Natneal', role: 'Production Manager', status: 'InActive' },
-    { id: 'IN120', name: 'Tamene Natneal', role: 'Inventory Manager', status: 'Active' },
-    { id: 'EM01', name: 'Tamene Natneal', role: 'Employee', status: 'InActive' },
-    { id: 'EM02', name: 'Tamene Natneal', role: 'Employee', status: 'Active' },
-    { id: 'EM03', name: 'Kidus Haile', role: 'Employee', status: 'Active' },
-    { id: 'EM04', name: 'Nahom Said', role: 'Employee', status: 'Active' },
-    { id: 'EM05', name: 'Helen Telaun', role: 'Employee', status: 'InActive' },
-    { id: 'EM06', name: 'Nahom Said', role: 'Employee', status: 'Active' }
-  ]);
-  
+  const [users, setUsers] = useState([]); // State to hold user data
+  const [error, setError] = useState(null); // Error state
+
+  // Fetch users from the backend
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/api/getusers");
+        setUsers(response.data); // Set fetched user data
+      } catch (err) {
+        console.error("Error fetching users:", err);
+        setError("Failed to fetch users.");
+      }
+    };
+
+    fetchUsers();
+  }, []);
+ 
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [isRemoveModalOpen, setIsRemoveModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
 
+  // Handle edit modal opening
   const handleEdit = (user) => {
     setSelectedUser(user);
     setIsEditModalOpen(true);
   };
 
+  // Handle remove modal opening
   const handleRemove = (user) => {
     setSelectedUser(user);
-    setIsRemoveModalOpen(true);
   };
 
+  // Handle closing modals
   const handleModalClose = () => {
     setIsEditModalOpen(false);
-    setIsRemoveModalOpen(false);
     setSelectedUser(null);
   };
 
+  // Handle input change in the edit form
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setSelectedUser({ ...selectedUser, [name]: value });
   };
 
-  const handleUpdate = () => {
-    const updatedUsers = users.map(user => 
-      user.id === selectedUser.id ? selectedUser : user
-    );
-    setUsers(updatedUsers);
-    handleModalClose();
-    alert(`Updated user with ID: ${selectedUser.id}`);
+  // Update user
+  const handleUpdate = async () => {
+    try {
+      await axios.put(`http://localhost:5000/api/updateuser/${selectedUser.UserID}`, selectedUser);
+      setUsers(users.map(user => user.UserID === selectedUser.UserID ? selectedUser : user)); // Update the user in the UI
+      handleModalClose();
+      alert("User updated successfully!");
+    } catch (error) {
+      console.error("Error updating user:", error);
+      alert("Failed to update user.");
+    }
   };
 
-  const confirmRemove = () => {
-    const updatedUsers = users.filter(user => user.id !== selectedUser.id);
-    setUsers(updatedUsers);
-    handleModalClose();
-    alert(`Removed user with ID: ${selectedUser.id}`);
-  };
 
   return (
     <div className="dashboard-container">
-      <Sidebar user="admin"/>
+      <Sidebar user="admin" />
       
       <main className="main-content">
-        <DashHead heading='User Management' />
+        <DashHead heading="User Management" />
         <section className="container-section">
           <h3>Modify User</h3>
           <div className="table-container">
@@ -77,14 +84,13 @@ function UserMng() {
               </thead>
               <tbody>
                 {users.map(user => (
-                  <tr key={user.id}>
-                    <td>{user.id}</td>
-                    <td>{user.name}</td>
-                    <td>{user.role}</td>
+                  <tr key={user.UserID}>
+                    <td>{user.UserID}</td>
+                    <td>{user.Fname} {user.Lname}</td>
+                    <td>{user.user_role}</td>
                     <td>{user.status}</td>
                     <td>
                       <button onClick={() => handleEdit(user)} className="edit-button">Edit</button>
-                      <button onClick={() => handleRemove(user)} className="remove-button">Remove</button>
                     </td>
                   </tr>
                 ))}
@@ -98,18 +104,24 @@ function UserMng() {
               <div className="modal-content">
                 <h4>Edit User</h4>
                 <label>ID:</label>
-                <input type="text" value={selectedUser.id} readOnly />
+                <input type="text" value={selectedUser.UserID} readOnly />
                 <label>Name:</label>
                 <input 
                   type="text" 
-                  name="name" 
-                  value={selectedUser.name} 
+                  name="Fname" 
+                  value={selectedUser.Fname} 
+                  onChange={handleInputChange} 
+                />
+                <input 
+                  type="text" 
+                  name="Lname" 
+                  value={selectedUser.Lname} 
                   onChange={handleInputChange} 
                 />
                 <label>Role:</label>
                 <select 
-                  name="role" 
-                  value={selectedUser.role} 
+                  name="user_role" 
+                  value={selectedUser.user_role} 
                   onChange={handleInputChange} 
                 >
                   <option value="Production Manager">Production Manager</option>
@@ -130,21 +142,7 @@ function UserMng() {
             </div>
           )}
 
-          {/* Modal for Confirming Removal of User */}
-          {isRemoveModalOpen && (
-            <div className="modal-overlay">
-              <div className="modal-content">
-                <h4>Remove User</h4>
-                <p>Are you sure you want to remove the following user?</p>
-                <label>ID: {selectedUser.id}</label>
-                <label>Name: {selectedUser.name}</label>
-                <div className="modal-buttons">
-                  <button onClick={confirmRemove} className="confirm-remove-button">Yes, Remove</button>
-                  <button onClick={handleModalClose} className="close-button">Cancel</button>
-                </div>
-              </div>
-            </div>
-          )}
+         
         </section>
       </main>
     </div>

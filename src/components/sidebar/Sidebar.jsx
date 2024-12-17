@@ -1,70 +1,97 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { AiOutlineDashboard } from "react-icons/ai";
 import { IoMdAdd } from "react-icons/io";
 import { MdModeEditOutline } from "react-icons/md";
-import { CiSettings } from "react-icons/ci";
-import { FaRegUser } from "react-icons/fa";
+import { CiSettings, CiBoxList } from "react-icons/ci";
 import { FaUser } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { TiFlowMerge } from "react-icons/ti";
 import { RiCalendarScheduleLine } from "react-icons/ri";
 import { MdOutlineReport } from "react-icons/md";
-
-import { CiBoxList } from "react-icons/ci";
-
 import { GiTalk } from "react-icons/gi";
+import { Link } from "react-router-dom";
+import "./Sidebar.css";
 
-import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router-dom';
 
-import './Sidebar.css'
-const Sidebar=({user})=>{
+const Sidebar = ({ user }) => {
+  // Retrieve and parse user data from localStorage
+  const userinfo = JSON.parse(localStorage.getItem("user")) || {};
+ const navigate = useNavigate();
+  // State hooks for user data
+  const [userfname, setFname] = useState(userinfo.Fname || "");
+  const [userlname, setLname] = useState(userinfo.Lname || "");
+  const [userrole, setRole] = useState(user || ""); // Fallback role
 
-    console.log(user)
-return(
+
+  const logout =()=>{
+    localStorage.clear('user');
+    navigate('/'); // Store user data in localStorage
+
+  }
+  // Menu items for each user role
+  const menuItems = {
+    productionmgr: [
+      { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardProduction" },
+      { icon: <RiCalendarScheduleLine />, label: "Production Schedule", link: "/ProductionSchedule" },
+      { icon: <TiFlowMerge />, label: "Workflow", link: "/WorkflowVisualize" },
+      { icon: <GiTalk />, label: "Communication", link: "/Communication" },
+      { icon: <CiSettings />, label: "Settings", link: "/ProdSettings" },
+    ],
+    admin: [
+      { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardAdmin" },
+      { icon: <IoMdAdd />, label: "Register", link: "/Register" },
+      { icon: <MdModeEditOutline />, label: "User Management", link: "/UserMng" },
+      { icon: <CiSettings />, label: "Settings", link: "/AdminSettings" },
+    ],
+    inventory: [
+      { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardInventory" },
+      { icon: <CiBoxList />, label: "Inventory List", link: "/InventoryList" },
+      { icon: <MdModeEditOutline />, label: "Order", link: "/Order" },
+      { icon: <MdOutlineReport />, label: "Report", link: "/Report" },
+      { icon: <CiSettings />, label: "Settings", link: "/AdminSettings" },
+    ],
+  };
+
+  return (
     <aside className="sidebar">
-        <div className="user-info">
-          <span className="user-icon"><FaUser color="rgb(210, 210, 210)"/></span>
-          <div className="user-details">
-            <h3>Biruk Mekonen</h3>
-            <p>{user==="productionmgr"? "Production manager": "Inventory manager"}</p>
-          </div>
+      {/* User Information */}
+      <div className="user-info">
+        <span className="user-icon">
+          <FaUser color="rgb(210, 210, 210)" />
+        </span>
+        <div className="user-details">
+          <h3>{`${userfname} ${userlname}`.trim()}</h3>
+          <p>
+            {userrole === "productionmgr"
+              ? "Production Manager"
+              : userrole === "inventory"
+              ? "Inventory Manager"
+              : "Admin"}
+          </p>
         </div>
+      </div>
 
-       { user==="productionmgr" ?
+      {/* Role-Specific Menu */}
+      {menuItems[userrole] ? (
         <ul className="menu">
-            <li className="menu-item active"><AiOutlineDashboard className="sideIcons"/><Link to='/DashboardProdction' > Dashboard</Link></li>
-            <li className="menu-item"><RiCalendarScheduleLine className="sideIcons"/><Link to='/ProductionSchedule' >Production schedule</Link></li>
-            <li className="menu-item"><TiFlowMerge className="sideIcons"/><Link to='/WorkflowVisualize'> Workflow</Link></li>
-            <li className="menu-item"><GiTalk className="sideIcons"/><Link to=''> communication</Link></li>
-            <li className="menu-item"><CiSettings className="sideIcons"/><Link to='/ProdSettings'> Settings</Link></li>
-          </ul>
+          {menuItems[userrole].map((item, index) => (
+            <li key={index} className="menu-item">
+              {item.icon}
+              <Link to={item.link}>{item.label}</Link>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No menu available for this role</p>
+      )}
 
-          : user==="admin"?
-           <ul className="menu">
-
-
-            <li className="menu-item active"><AiOutlineDashboard className="sideIcons"/><Link to='/DashboardAdmin' > Dashboard</Link></li>
-            <li className="menu-item"><IoMdAdd className="sideIcons"/><Link to='/Register' >Register</Link></li>
-            <li className="menu-item"><MdModeEditOutline className="sideIcons"/><Link to='/UserMng'> User Management</Link></li>
-            <li className="menu-item"><CiSettings className="sideIcons"/><Link to='/AdminSettings'> Settings</Link></li>
-          </ul>
-          
-          : user==="inventory"?
-           <ul className="menu">
-
-
-            <li className="menu-item active"><AiOutlineDashboard className="sideIcons"/><Link to='/DashboardInventory' > Dashboard</Link></li>
-            <li className="menu-item"><CiBoxList className="sideIcons"/><Link to='/Inventorylist' >Inventory list</Link></li>
-            <li className="menu-item"><MdModeEditOutline className="sideIcons"/><Link to='/Order'>Order</Link></li>
-            <li className="menu-item"><MdOutlineReport className="sideIcons"/><Link to='/Report'>Report</Link></li>
-            <li className="menu-item"><CiSettings className="sideIcons"/><Link to='/AdminSettings'>Settings</Link></li>
-          </ul>
-          :
-          ''
-          }
-        <button className="logout-btn"><IoIosLogOut className="sideIcons"/> Logout</button>
-      </aside>
-)
-}
+      {/* Logout Button */}
+      <button onClick={logout} className="logout-btn">
+        <IoIosLogOut className="sideIcons" /> Logout
+      </button>
+    </aside>
+  );
+};
 
 export default Sidebar;
