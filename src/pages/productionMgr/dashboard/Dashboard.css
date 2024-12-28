@@ -1,23 +1,66 @@
-.prodcntainer-section{
-    display: flex;
-    gap:30px;
-    height: 65vh;
-}
-.productionChart{
-    width:550px;
-    height: 100%;
-}
-.productionChart img{
-    height: 100%;
-    width:100%
-}
-.productionProgressBar{
-    width:300px;
-    height: 100%;
+/* Styling for the Dashboard */
+.main-content{
+    height: 100vh;
+  }
+.prodcntainer-section {
     display: flex;
     flex-direction: column;
+    gap: 30px;
+    height: 90%;
+}
+  .productionChart {
+    width: 550px;
+    height: 100%;
+  }
+  
+  .productionProgressBar {
+    width: 300px;
+    height: 70%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    gap:13px;
+    gap: 13px;
     font-size: 1.3rem;
-}
+    width: 100%;
+  }
+  /* Style for the scrollbar */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+    height: 10px; /* Height for horizontal scrollbar */
+  }
+  
+  /* Style for the track (the background of the scrollbar) */
+  ::-webkit-scrollbar-track {
+    background:transparent; /* Light gray background */
+    border-radius: 10px; /* Rounded corners */
+  }
+  
+  /* Style for the thumb (the draggable part of the scrollbar) */
+  ::-webkit-scrollbar-thumb {
+    background: #888; /* Dark gray color */
+    border-radius: 10px; /* Rounded corners */
+    transition: background 0.3s ease; /* Smooth transition on hover */
+  }
+  
+  /* Hover effect for the thumb */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Darker gray when hovered */
+  }
+  
+  /* Optional: Style for the corner (intersection of vertical and horizontal scrollbar) */
+  ::-webkit-scrollbar-corner {
+    background: #f1f1f1;
+  }
+  
+  .productionProgressBar h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    align-self: center;
+  }
+  
+  .productionProgressBar p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  

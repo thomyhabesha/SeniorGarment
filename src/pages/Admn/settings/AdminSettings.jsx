@@ -74,6 +74,8 @@ function AdminSettings() {
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
               />
+
+              
               
             </form>
             <button type="submit" className="button">Update</button>

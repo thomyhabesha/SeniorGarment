@@ -31,9 +31,7 @@ const authenticateUserByRole = (role, username, password, callback) => {
           } else if (isMatch) {
             console.log("Password match successful!");
             const { Fname, Lname, email,user_role } = results[0];
-            console.log("Fname:", Fname);
-            console.log("Lname:", Lname);
-            console.log("email:", email);
+            
             callback(null, { Fname, Lname, email,user_role });  // Return user data
           } else {
             console.log("Password does not match.");

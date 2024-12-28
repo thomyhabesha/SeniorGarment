@@ -7,6 +7,7 @@ const GetuserRoutes = require('./Routes/getUserRoute');
 const CreateUserRoute = require('./Routes/CreateUserRoute');
 const settingsRoute = require('./Routes/settingsRoute');
 const updateuserRoute = require('./Routes/updateuserRoute');
+const taskRoutes = require('./Routes/Taskroute');
 const cors = require('cors');
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use('/api', GetuserRoutes);
 app.use('/api', CreateUserRoute); 
 app.use('/api', updateuserRoute); 
 app.use('/api', settingsRoute); 
+app.use('/api', taskRoutes); 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

@@ -32,7 +32,7 @@ const Sidebar = ({ user }) => {
   // Menu items for each user role
   const menuItems = {
     productionmgr: [
-      { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardProduction" },
+      { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardProdction" },
       { icon: <RiCalendarScheduleLine />, label: "Production Schedule", link: "/ProductionSchedule" },
       { icon: <TiFlowMerge />, label: "Workflow", link: "/WorkflowVisualize" },
       { icon: <GiTalk />, label: "Communication", link: "/Communication" },
