@@ -8,6 +8,10 @@ const CreateUserRoute = require('./Routes/CreateUserRoute');
 const settingsRoute = require('./Routes/settingsRoute');
 const updateuserRoute = require('./Routes/updateuserRoute');
 const taskRoutes = require('./Routes/Taskroute');
+const ProductionRoute = require('./Routes/ProductionRoute');
+const ProdutionScheduleUpdateRout = require('./Routes/ProdutionScheduleUpdateRout');
+const ProductionScheduleCreateRoute = require('./Routes/ProductionScheduleCreateRoute');
+const WorkflowRoute = require('./Routes/WorkflowRoute');
 const cors = require('cors');
 dotenv.config();
 
@@ -26,6 +30,10 @@ app.use('/api', CreateUserRoute);
 app.use('/api', updateuserRoute); 
 app.use('/api', settingsRoute); 
 app.use('/api', taskRoutes); 
+app.use('/api', ProductionRoute); 
+app.use('/api', ProdutionScheduleUpdateRout); 
+app.use('/api', ProductionScheduleCreateRoute); 
+app.use('/api', WorkflowRoute); 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

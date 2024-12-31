@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const { updateAdminSettings } = require('../Controllers/SettingsController');
+const { updateUserSettings } = require('../Controllers/SettingsController');
 
 // Route to update admin settings
-router.put('/updateSettings', updateAdminSettings);
+router.put('/updateSettings', updateUserSettings);
 
 module.exports = router;

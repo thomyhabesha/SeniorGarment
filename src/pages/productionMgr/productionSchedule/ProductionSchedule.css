@@ -11,13 +11,15 @@
    .prodwrap{
     display: flex;
     flex-direction: column;
-    gap:8px
+    gap:8px;
+    margin-top: 15px;
    }
 
 /* Table Styling */
 
 .productionDash td {
   color: black;
+  font-size: 0.9rem;
 }
 
 .productionDash th {
@@ -151,3 +153,159 @@ table.productionDash td {
     padding: 6px 18px;
   }
   
+
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    width: 400px;
+  }
+  
+  .popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .popup label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333333;
+  }
+  
+  .popup input {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  .popup button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .popup button[type='button'] {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .popup button[type='button']:hover {
+    background-color: #0056b3;
+  }
+  
+  .popup button:last-child {
+    background-color: #d9534f;
+    color: white;
+  }
+  
+  .popup button:last-child:hover {
+    background-color: #c9302c;
+  }
+  
+  .popup-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #888;
+  }
+  
+  .popup-close:hover {
+    color: #333;
+  }
+  .popup select {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #ffffff;
+    color: #333333;
+  }
+  
+  .popup select:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  .status-popup {
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000;
+  }
+  .status-popup p {
+    margin-bottom: 15px;
+    font-size: 16px;
+  }
+  .status-popup button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .status-popup button:hover {
+    background-color: #0056b3;
+  }
+  
+/* Textarea styles */
+form textarea {
+  width: 100%;
+  height: 100px;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allow resizing only vertically */
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+/* Add focus effect */
+form textarea:focus {
+  border-color: #007BFF;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+.createBtn{
+  display: flex;
+  justify-content: end;
+  padding-right: 40px;
+}
+.createBtn button{
+  background-color: rgb(8, 8, 167);
+  color:white;
+  padding: 6px 14px;
+  border-radius: 13px;
+  font-size: 0.8rem;
+  
+}

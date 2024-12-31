@@ -1,151 +1,192 @@
-
-
-.table-container {
-  max-height: 400px; /* Set a maximum height for the container */
-  overflow-y: auto; /* Enable vertical scrolling */
-  border-radius: 4px; /* Slightly rounded corners */
-  margin-top: 20px; /* Space above the table */
-  background-color: white; /* White background for the table */
-  height: 350px;
-}
-
-
-.user-table {
-  width: 100%; /* Make the table take the full width */
-  border-collapse: collapse; /* Collapse borders for a cleaner look */
+.app-container {
   font-family: 'Arial', sans-serif;
+  padding: 20px;
 }
 
-.user-table th, .user-table td {
-  padding: 12px 15px; /* Increased padding for better spacing */
-  text-align: left; /* Align text to the left */
+.app-container h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-.user-table th {
-  background-color: #1FA5FF;; /* Blue background for the header */
-  color: white; /* White text color for the header */
-  font-weight: bold; /* Bold text for header */
+.entity-section {
+  margin-bottom: 40px;
 }
 
-.user-table tr:nth-child(even) {
-  background-color: #f2f2f2; /* Light gray for even rows */
+.entity-section h2 {
+  text-align: left;
+  color: #444;
+  text-transform: uppercase;
+  margin-bottom: 15px;
 }
 
-
-.prodcntainer-section{
- 
-  gap:80px;
-  max-height: 450px; /* Adjust this to set the scrollable area height */
-overflow-y: auto; /* Enables vertical scrolling */
-overflow-x: hidden;
-padding: 0px 20px;
-
+.entities-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
- 
-
-/* Table Styling */
-
-table.prodDash td {
-color: white;
+.entity-card {
+  background: #fff;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
 }
 
-table.prodDash th {
-background-color: #1f2937; /* Dark slate background */
-color: #fff; /* White text for headers */
-text-transform: uppercase;
+.entity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
 }
 
-
-
-
-
-table.prodDash td:first-child {
-font-weight: bold; /* Highlight the first column */
+.entity-card h3 {
+  margin: 0 0 10px;
+  font-weight: bold;
+  color: #222;
 }
 
-/* Table Wrapper for Scrollable Body */
-.table-wrapper {
-max-height: 200px; /* Adjust this to set the scrollable area height */
-overflow-y: auto; /* Enables vertical scrolling */
-overflow-x: hidden; /* Prevents horizontal scrolling */
-
-}
-.table-wrapper:nth-child(2), .table-wrapper:nth-child(3) {
-margin-top: 80px;
+.entity-card p {
+  margin: 0 0 15px;
+  font-size: 0.9rem;
+  color: #555;
 }
 
-table.prodDash {
-width: 100%;
-border-collapse: collapse;
+.entity-card.planned {
+  border-left: 5px solid #0275d8;
 }
 
-.prodDash{
-background-color: #0f6e22;
-
+.entity-card.in-progress {
+  border-left: 5px solid #f0ad4e;
 }
 
-.prodDash2{
-background-color: #595CFF;
+.entity-card.completed {
+  border-left: 5px solid #5cb85c;
 }
 
-.prodDash3{
-background-color: #B10000;
-}
-table.prodDash th,
-table.prodDash td {
-padding: 12px;
+.details-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 7px 13px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  font-size: 0.8rem;
 }
 
-
-
-
-.prodDash tr td:nth-child(2){
-display: flex;
-justify-content: center;
-align-items: center;
+.details-button:hover {
+  background-color: #0056b3;
 }
-.prodDash tr td:nth-child(2) button{
-background-color: #035e9b;
-border-radius: 6px;
-padding: 4px 10px;
-font-size: 0.8rem;
-color: white;
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
 }
-  .popup{
-    position: absolute;
-    top:20%;
-    left:30%;
-    background-color: rgb(255, 255, 255);
-   
-    display: flex;
-    flex-direction: column;
-    gap:8px;
-    padding-bottom:10px;
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  .popup button{
-    align-self: flex-end;
-    background-color: rgb(183, 34, 34);
-    border-radius: 12px;
-    padding: 4px 10px;
-    color:white;
-    margin-right: 15px;
-    font-size: 0.8rem;
+  to {
+    opacity: 1;
   }
+}
 
-  .popup button:hover{
-    background-color: rgb(158, 30, 30);
-   
+.popup-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
   }
-.poptable-wrapper{
-background-color: rgb(255, 255, 255);
-border-radius:6px;
+  to {
+    transform: translateY(0);
+  }
 }
-.poptable-wrapper .prodDash4{
-max-height: 400px;
-background-color: rgb(255, 255, 255);
-}
-.poptable-wrapper .prodDash4 tr td{
-color: black;
 
+.popup-content h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.popup-content p {
+  color: #555;
+  margin: 10px 0;
+  font-size: 1rem;
+}
+
+.popup-content strong {
+  color: #333;
+}
+
+.close-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: bold;
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.close-button:hover {
+  background-color: #a71d2a;
+}
+
+
+.red-bg {
+  border-top:3px solid #f75858; /* Light Red */
+}
+
+.yellow-bg {
+  border-top:3px solid #f8d75e; /* Light Yellow */
+}
+
+.blue-bg {
+ border-top:3px solid #5da6f5; /* Light Blue */
+}
+
+.entity-card {
+  padding: 16px;
+  margin: 10px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.details-button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.details-button:hover {
+  background-color: #0056b3;
 }

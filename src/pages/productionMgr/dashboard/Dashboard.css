@@ -14,14 +14,17 @@
   }
   
   .productionProgressBar {
-    width: 300px;
-    height: 70%;
+    
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 13px;
     font-size: 1.3rem;
-    width: 100%;
+   
+  }
+  .productionProgressBar2{
+    width:80%;
+    height: 60%;
   }
   /* Style for the scrollbar */
 ::-webkit-scrollbar {
@@ -53,14 +56,14 @@
   }
   
   .productionProgressBar h3 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     margin-bottom: 10px;
     align-self: center;
   }
   
   .productionProgressBar p {
     margin-top: 10px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     color: #333;
   }
   

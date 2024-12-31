@@ -90,11 +90,13 @@ const DashboardProdction = () => {
 
           <div className="productionProgressBar">
             <h3>Finished Tasks</h3>
+          <div className="productionProgressBar2">
             <CircularProgressbar 
               value={finishedTaskPercent} 
               text={`${Math.round(finishedTaskPercent)}%`} 
               strokeWidth={10}
             />
+          </div>
             <p>{Math.round(finishedTaskPercent)}% of tasks are finished</p>
           </div>
         </section>
