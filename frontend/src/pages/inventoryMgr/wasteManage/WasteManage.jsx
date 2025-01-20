@@ -246,8 +246,13 @@ function WasteManage() {
           {formVisible2 && (
             <div className="summary-container">
 
-              <h2>Summary</h2>
+              <h2>Summary for the current month</h2>
               <h3>Total Unrepairable Defect Cost: ${summary}</h3>
+              <div>
+              <button onClick={handleFormToggle2} className="create-defect-btn summary-defect-btn">
+            Cancel 
+          </button>
+            </div>
             </div>
           )}
         </div>
@@ -260,7 +265,7 @@ function WasteManage() {
             onClick={handleFormToggle2}
             className="summary-defect-btn create-defect-btn"
           >
-            {formVisible2 ? "Cancel" : "Summary"}
+            Summary
           </button>
         </div>
       </main>

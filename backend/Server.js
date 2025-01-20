@@ -17,6 +17,8 @@ const GarmentDefectsRoutes = require('./Routes/GarmentDefectsRoutes');
 const SuppliersRoutes = require('./Routes/SuppliersRoutes');
 const GetDegfectsRoutes = require('./Routes/GetDegfectsRoutes');
 const GetSummaryRoutes = require('./Routes/GetSummaryRoutes');
+const ResourceRequestRoute = require('./Routes/ResourceRequestRoute');
+const UpdateResourceStockRoute = require('./Routes/UpdateResourceStockRoute');
 const cors = require('cors');
 dotenv.config();
 const app = express();
@@ -42,6 +44,8 @@ app.use('/api', SuppliersRoutes);
 app.use('/api', GarmentDefectsRoutes); 
 app.use('/api', GetDegfectsRoutes); 
 app.use('/api', GetSummaryRoutes); 
+app.use('/api', ResourceRequestRoute); 
+app.use('/api', UpdateResourceStockRoute); 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
