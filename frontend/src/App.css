@@ -1,47 +1,118 @@
-
-
-.App {
-  text-align: center;
-  background-color: #282c34;
+/* Resetting default browser styles */
+* {
+  margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+html, body {
+  height: 100%; /* Ensures full-height usage */
+  width: 100%; /* Ensures full-width usage */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+  font-family: 'Arial', sans-serif; /* A clean default font */
+  background-color: #f9f9f9; /* A neutral background color */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#root {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+/* Fullscreen Background Fix */
+.container {
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background: url('./assets/garmentImg/Ethiopia-Hawassa-Industrial-Park-textile-workers-GettyImages-1198457682.webp') no-repeat center center/cover; /* Replace with your image path */
+  position: relative;
+  overflow: hidden; /* Prevent content overflow */
+}
+
+/* Overlay for better contrast */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark overlay with transparency */
+  z-index: 1;
+}
+
+/* Login Box */
+.loginBox {
+  position: relative;
+  z-index: 2;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  width: 350px;
+}
+
+/* Error Message */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Form Inputs */
+.form .input {
+  width: 100%;
+  padding: 0.8rem;
+  margin: 0.8rem 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #333;
+}
+
+/* Dropdown */
+.form .input select {
+  appearance: none;
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Button */
+.form .button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #007bff; /* Primary blue */
   color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.App-link {
-  color: #61dafb;
+.form .button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Forgot Password */
+.forgotPassword {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: #007bff;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.forgotPassword:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .loginBox {
+    width: 90%;
   }
-  to {
-    transform: rotate(360deg);
-  }
 }
-
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;

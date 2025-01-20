@@ -7,9 +7,11 @@
 }
 .prodHead{
     display: flex;
-    justify-content: space-between;
-    width: 75%;
+    gap:30px;
+    width: 100%;
+    flex-wrap:wrap ;
     padding: 0 15px;
+    
 }
 .user-count-card-cont1{
     background-color: #4635fa; 

@@ -7,7 +7,7 @@ import DashboardProdction from "./pages/productionMgr/dashboard/DashboardProdcti
 import DashboardInventory from "./pages/inventoryMgr/dashboard/DashboardInventory";
 import Order from "./pages/inventoryMgr/order/Order";
 import Report from "./pages/inventoryMgr/report/Report";
-import Inventorylist from "./pages/inventoryMgr/Inventorylist/Inventorylist";
+import WasteManage from "./pages/inventoryMgr/wasteManage/WasteManage";
 import WorkflowVisualize from "./pages/productionMgr/workflowVisualize/WorkflowVisualize";
 import Register from "./pages/Admn/register/Register";
 import UserMng from "./pages/Admn/userMng/UserMng";
@@ -26,7 +26,7 @@ function App() {
         <Route path="/DashboardProdction" element={<DashboardProdction />} />
         <Route path="/DashboardInventory" element={<DashboardInventory />} />
         <Route path="/WorkflowVisualize" element={<WorkflowVisualize />} />
-        <Route path="/Inventorylist" element={<Inventorylist />} />
+        <Route path="/WasteManage" element={<WasteManage />} />
         <Route path="/Order" element={<Order />} />
         <Route path="/Report" element={<Report />} />
         <Route path="/Register" element={<Register />} />

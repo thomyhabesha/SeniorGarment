@@ -51,6 +51,26 @@ const ProdDashhead=({heading, user})=>{
         </div>
         <img src={AnalyticImage} alt='' /> 
         </div>
+
+{/*forth heading */}
+        <div className="user-count-card-cont user-count-card-cont3">
+
+        <div className="user-count-card">
+          <h3>5</h3>
+          <p>Out of stock</p>
+        </div>
+        <img src={AnalyticImage} alt='' /> 
+        </div>
+
+{/*fivth heading */}
+        <div className="user-count-card-cont user-count-card-cont3">
+
+        <div className="user-count-card">
+          <h3>5</h3>
+          <p>Out of stock</p>
+        </div>
+        <img src={AnalyticImage} alt='' /> 
+        </div>
         </div>
         :''
         }
