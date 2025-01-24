@@ -35,6 +35,7 @@ header{
     justify-content: space-between;
     width:100%;
     overflow-y: hidden;
+    padding: 12px 0;
 }
 
 
@@ -81,13 +82,19 @@ header{
   
   
   .inventory{
-    max-height: 340px;
+    max-height: 460px;
     width:680px;
    overflow-y: auto;
    display: flex;
    flex-direction: column;
    gap:6px;
    align-items: end;
+  box-shadow: -8px 8px 14px rgba(132, 132, 132, 0.495);
+  border-radius: 13px;
+  }
+  .inventory h2{
+    align-self:center;
+    margin-bottom: 12px;
   }
   .inputsearch{
   padding: 8px;

@@ -34,6 +34,7 @@ function DashboardInventory() {
   const handleRequestClick = (resource) => {
     setSelectedResource(resource);
     setShowPopup(true);
+    setupdateStock(false);
   };
 
   const handleUpdateClick = (resource) => {
@@ -120,6 +121,7 @@ function DashboardInventory() {
             </div>
 
             <div className="inventory">
+              <h2>Resource tracking</h2>
               <div>
                 <input
                   type="text"
@@ -198,12 +200,20 @@ function DashboardInventory() {
       {showPopup && (
         <div className="popup">
           <div className="popup-inner">
-            <h2>Request Resource</h2>
+            <h2>{updateStock ? 'Update Resource':'Request Resource'}</h2>
             <form>
               <div className="form-group">
                 <label>Resource Name:</label>
                 <input type="text" value={selectedResource.ResourcesName} readOnly />
               </div>
+
+              { 
+              !updateStock && 
+                <div className="form-group">
+                <label>Supplier:</label>
+                <input type="text" value={selectedResource.suppliername} readOnly />
+              </div>
+              }
             {updateStock ? 
             
             <div className="form-group">
@@ -216,8 +226,8 @@ function DashboardInventory() {
                 >
                   <option value="">Select Status</option>
                   <option value="Waiting">Waiting</option>
-                  <option value="Received">Received</option>
-                  <option value="Rejected">Rejected</option>
+                  <option value="Received">Arrived</option>
+                  <option value="Rejected">Didnt arrive</option>
                 </select>
               </div>
             : 
@@ -246,7 +256,7 @@ function DashboardInventory() {
               <div className="form-actions">
                 {
                   updateStock ?
-                  <button type="submit" onClick={handleUpdate} className="submitButton">{submiting?'Updating...':'Update'}</button>
+                  <button type="submit" onClick={handleUpdate} className="submitButton">{submiting?'Proceeding...':'Proceed'}</button>
                   :
                   <button type="submit" onClick={handleSubmit}  className="submitButton">{submiting?'Submitting...':'Submit'}</button>
                 }
@@ -255,6 +265,7 @@ function DashboardInventory() {
                 </button>
               </div>
 
+             {selectedResource && <p>Total cost: {selectedResource.CostPerQuantity * formData.quantity  }</p>}
              {setsubmitmessage && <p style={{color:submitmessage ==='Date submitted successfully!'? 'green':'red'}}>{submitmessage}</p>}
             </form>
             
