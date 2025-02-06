@@ -47,8 +47,6 @@ const Sidebar = ({ user }) => {
     inventory: [
       { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardInventory" },
       { icon: <CiBoxList />, label: "Defects", link: "/WasteManage" },
-      { icon: <MdModeEditOutline />, label: "Order", link: "/Order" },
-      { icon: <MdOutlineReport />, label: "Report", link: "/Report" },
       { icon: <CiSettings />, label: "Settings", link: "/#" },
     ],
   };

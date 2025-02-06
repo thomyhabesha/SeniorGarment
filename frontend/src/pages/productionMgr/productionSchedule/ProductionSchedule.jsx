@@ -3,8 +3,12 @@ import './ProductionSchedule.css';
 import Sidebar from '../../../components/sidebar/Sidebar';
 import DashHead from '../../../components/dashHead/DashHead';
 import Settings from '../../../components/settings/Settings';
+import jsPDF from 'jspdf';
+
+
 
 function ProductionSchedule() {
+  const [searchTerm, setSearchTerm] = useState('');
   const [popup, setPopup] = useState(false);
   const [popup2, setPopup2] = useState(false);
   const [createStatusPopup, setcreateStatusPopup] = useState(false);
@@ -123,7 +127,37 @@ function ProductionSchedule() {
   };
 
 
+  const generatePDF = () => {
+    const doc = new jsPDF();
+  
+    doc.text('Resource Inventory Report', 14, 10);
+   
+    const tableColumn = [ 'Task_name', 'Priorty', 'Team', 'Task_Status','startingTime','EndingTime'];
+    const tableRows = data.map((datas) => [
+     
+      datas.Task_name,
+      datas.Priorty,
+      datas.Team,
+      datas.Task_Status,
+      datas.startingTime,
+      datas.EndingTime,
+    ]);
+  
+  
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+      startY: 20,
+    });
+  
+   
+    doc.save('inventory_report.pdf');
+  };
 
+  const filteredResources = data.filter((datas) =>
+    datas.Task_name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  
 
   return (
     <div className="dashboard-container bg-slate-300">
@@ -133,6 +167,18 @@ function ProductionSchedule() {
         <div className="prodwrap">
           <section className="container-section prodcntainer-section">
             <div className="table-wrapper">
+            <div className="formHead">
+            <input
+                  type="text"
+                  placeholder="Search by Task name"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="inputsearch"
+                />
+            <button onClick={generatePDF} className="downloadButton">
+          Download as PDF
+        </button>
+              </div>
               <table className="productionDash">
                 <thead>
                   <tr>
@@ -147,7 +193,7 @@ function ProductionSchedule() {
                   </tr>
                 </thead>
                 <tbody>
-                  {data.map((item, index) => (
+                  {filteredResources.map((item, index) => (
                     <tr key={index}>
                       <td>{item.Task}</td>
                       <td>{item.Task_name}</td>

@@ -1,12 +1,11 @@
 
 
 .table-container {
-  max-height: 400px; /* Set a maximum height for the container */
-  overflow-y: auto; /* Enable vertical scrolling */
-  border: 1px solid #ccc; /* Light gray border */
-  border-radius: 4px; /* Slightly rounded corners */
-  margin-top: 20px; /* Space above the table */
-  background-color: white; /* White background for the table */
+  overflow-y: auto; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  margin-top: 20px; 
+  background-color: white; 
   height: 350px;
 }
 
@@ -108,3 +107,18 @@ align-items: center;
     font-size: 0.8rem;
   }
   
+  .formHead{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:end;
+    padding:8px;
+  }
+  .downloadButton{
+    padding:6px 12px;
+    background-color:blue;
+    font-size:0.9rem;
+    color:white;
+    border:none;
+    border-radius:12px
+  }

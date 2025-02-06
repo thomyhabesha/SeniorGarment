@@ -1,7 +1,11 @@
 // server.js
 const express = require('express');
-const bodyParser = require('body-parser');
+const cors = require('cors');
 const dotenv = require('dotenv');
+dotenv.config();
+const app = express();
+const port = process.env.PORT || 5000;
+const bodyParser = require('body-parser');
 const userRoutes = require('./Routes/UserRoutes');
 const GetuserRoutes = require('./Routes/getUserRoute');
 const CreateUserRoute = require('./Routes/CreateUserRoute');
@@ -19,15 +23,17 @@ const GetDegfectsRoutes = require('./Routes/GetDegfectsRoutes');
 const GetSummaryRoutes = require('./Routes/GetSummaryRoutes');
 const ResourceRequestRoute = require('./Routes/ResourceRequestRoute');
 const UpdateResourceStockRoute = require('./Routes/UpdateResourceStockRoute');
-const cors = require('cors');
-dotenv.config();
-const app = express();
-const port = process.env.PORT || 5000;
-app.use(cors()); 
+const AddOrderroute = require('./Routes/AddOrderroute');
+const GetResourceCountRoute = require('./Routes/GetResourceCountRoute');
 
-// Middleware
+
+
+app.use(cors()); 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+
 // Routes
 app.use('/api', userRoutes);
 app.use('/api', GetuserRoutes); 
@@ -46,6 +52,11 @@ app.use('/api', GetDegfectsRoutes);
 app.use('/api', GetSummaryRoutes); 
 app.use('/api', ResourceRequestRoute); 
 app.use('/api', UpdateResourceStockRoute); 
+app.use('/api', AddOrderroute); 
+app.use('/api', GetResourceCountRoute); 
+
+
+
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });

@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useRef } from 'react';
 import { Bar } from 'react-chartjs-2';
 import Sidebar from '../../../components/sidebar/Sidebar';
 import DashHead from '../../../components/dashHead/DashHead';
+
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './Dashboard.css'
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 // Register chart.js components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
@@ -13,7 +16,7 @@ ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 const DashboardProdction = () => {
   const [data, setData] = useState(null);
   const [finishedTaskPercent, setFinishedTaskPercent] = useState(0);
-
+  const chartRef = useRef(null);
   // Fetch task counts from the Express API
   useEffect(() => {
     fetch('http://localhost:5000/api/task-counts')
@@ -78,27 +81,35 @@ const DashboardProdction = () => {
     }
   };
 
+
+  const downloadChartAsPDF = () => {
+    const chartElement = chartRef.current.canvas;
+
+    html2canvas(chartElement, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('landscape');
+      pdf.addImage(imgData, 'PNG', 15, 15, 260, 150);
+      pdf.save('task_chart.pdf');
+    });
+  };
+
+  
   return (
     <div className="dashboard-container bg-slate-300">
       <Sidebar user="productionmgr" />
       <main className="main-content">
         <DashHead heading="Dashboard" user="productionmgr" />
+        <div className="formHead">
+            <button onClick={downloadChartAsPDF} className="downloadButton">
+        Download as PDF
+      </button>
+      </div>
         <section className="container-section prodcntainer-section">
-         
-            <Bar data={data} options={options} />
+         <div className="chartTop">
+            <Bar ref={chartRef} data={data} options={options} />
+         </div>
           
-
-          <div className="productionProgressBar">
-            <h3>Finished Tasks</h3>
-          <div className="productionProgressBar2">
-            <CircularProgressbar 
-              value={finishedTaskPercent} 
-              text={`${Math.round(finishedTaskPercent)}%`} 
-              strokeWidth={10}
-            />
-          </div>
-            <p>{Math.round(finishedTaskPercent)}% of tasks are finished</p>
-          </div>
+            
         </section>
       </main>
     </div>

@@ -2,8 +2,11 @@ import React, { useState, useEffect } from "react";
 import "./WasteManage.css";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import axios from "axios";
+import jsPDF from 'jspdf';
+
 
 function WasteManage() {
+  const [searchTerm, setSearchTerm] = useState('');
   const [defects, setDefects] = useState([]);
   const [resources, setResources] = useState([]);
   const [suppliers, setSuppliers] = useState([]);
@@ -89,6 +92,39 @@ function WasteManage() {
     setSending(false);
   };
 
+  const generatePDF = () => {
+  const doc = new jsPDF();
+
+  doc.text('Resource Inventory Report', 14, 10);
+ 
+  const tableColumn = [ 'defect type', 'notes', 'replacement received','reported date','Resources name','defectd quantity','Status','return status',];
+  const tableRows = defects.map((defect) => [
+   
+    defect.defect_type,
+    defect.notes,
+    defect.replacement_received===0?'Not received':'Received',
+    defect.reported_date,
+    defect.ResourcesName,
+    defect.defectdquantity,
+    defect.resStatus,
+    defect.return_status,
+  ]);
+
+
+  doc.autoTable({
+    head: [tableColumn],
+    body: tableRows,
+    startY: 20,
+  });
+
+ 
+  doc.save('inventory_report.pdf');
+};
+
+const filteredResources = defects.filter((defect) =>
+  defect.defect_type.toLowerCase().includes(searchTerm.toLowerCase())
+);
+
   return (
     <div className="dashboard-container bg-slate-300">
       <Sidebar user="inventory" />
@@ -99,6 +135,18 @@ function WasteManage() {
 
         <div className="defects-table-cont">
           {/* Table */}
+            <div className="formHead">
+            <input
+                  type="text"
+                  placeholder="Search by type"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="inputsearch"
+                />
+            <button onClick={generatePDF} className="downloadButton">
+          Download as PDF
+        </button>
+              </div>
           <table className="defects-table">
             <thead>
               <tr>
@@ -114,7 +162,7 @@ function WasteManage() {
               </tr>
             </thead>
             <tbody>
-              {defects.map((defect) => (
+              {filteredResources.map((defect) => (
                 <tr key={defect.defect_id}>
                   <td>{defect.defect_type}</td>
                   <td>{defect.notes}</td>

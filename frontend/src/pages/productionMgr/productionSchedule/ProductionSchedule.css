@@ -60,7 +60,21 @@ table.productionDash td {
   padding: 12px;
 }
 
-
+.formHead{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:end;
+  padding:8px;
+}
+.downloadButton{
+  padding:6px 12px;
+  background-color:blue;
+  font-size:0.9rem;
+  color:white;
+  border:none;
+  border-radius:12px
+}
 
 
 .productionDash tr td:last-child{

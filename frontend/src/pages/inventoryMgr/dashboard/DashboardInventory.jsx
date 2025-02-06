@@ -121,6 +121,7 @@ function DashboardInventory() {
             </div>
 
             <div className="inventory">
+            <div className="inventoryhead">
               <h2>Resource tracking</h2>
               <div>
                 <input
@@ -130,6 +131,7 @@ function DashboardInventory() {
                   onChange={(e) => setSearchTerm(e.target.value)}
                   className="inputsearch"
                 />
+              </div>
               </div>
               <table className="productionDash">
                 <thead>
@@ -167,7 +169,7 @@ function DashboardInventory() {
                           onClick={() => handleRequestClick(resource)}
                           disabled={resource.quantity > 10}
                         >
-                          Request
+                          Order
                         </button>
 
                           <button

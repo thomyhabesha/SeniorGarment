@@ -12,7 +12,24 @@
     width: 550px;
     height: 100%;
   }
-  
+  .formHead{
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:end;
+    padding:8px;
+  }
+  .downloadButton{
+    padding:6px 12px;
+    background-color:blue;
+    font-size:0.9rem;
+    color:white;
+    border:none;
+    border-radius:12px
+  }
+  .chartTop{
+    height:70vh
+  }
   .productionProgressBar {
     
     display: flex;
