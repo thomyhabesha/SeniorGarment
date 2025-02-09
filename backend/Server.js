@@ -25,6 +25,9 @@ const ResourceRequestRoute = require('./Routes/ResourceRequestRoute');
 const UpdateResourceStockRoute = require('./Routes/UpdateResourceStockRoute');
 const AddOrderroute = require('./Routes/AddOrderroute');
 const GetResourceCountRoute = require('./Routes/GetResourceCountRoute');
+const RestePsswordRoute = require('./Routes/RestePsswordRoute');
+const SetNewPasswordRoute = require('./Routes/SetNewPasswordRoute');
+const VerifyCode = require('./Routes/VerifyCode');
 
 
 
@@ -54,6 +57,9 @@ app.use('/api', ResourceRequestRoute);
 app.use('/api', UpdateResourceStockRoute); 
 app.use('/api', AddOrderroute); 
 app.use('/api', GetResourceCountRoute); 
+app.use('/api', RestePsswordRoute); 
+app.use('/api', SetNewPasswordRoute); 
+app.use('/api', VerifyCode); 
 
 
 

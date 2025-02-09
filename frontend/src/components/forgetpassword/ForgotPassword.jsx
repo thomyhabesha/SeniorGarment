@@ -67,7 +67,7 @@ const handlePasswordResetSubmit = async () => {
                 setPasswordLengthError(true);
                 return;
             }
-            await axios.post('https://api.kefetastartups.com/newpassword/resetUserPassword', { email, newPassword });
+            await axios.post('http://localhost:5000/api/resetUserPassword', { email, newPassword });
             setPasswordLengthError(false);
             setPasswordResetError(false);
             setnewPasswordSuccess(true);

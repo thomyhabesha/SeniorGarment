@@ -38,7 +38,7 @@ const resetPassword = (email) => {
     const code = generateCode();
 
     return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM user_account WHERE email = ?', [email], (error, results) => {
+        pool.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
             if (error) {
                 console.log('Error checking email existence:', error);
                 return reject('Error checking email existence');
@@ -48,7 +48,7 @@ const resetPassword = (email) => {
                 return reject('Email does not exist');
             }
 
-            pool.query('UPDATE user_account SET reset_code = ? WHERE email = ?', [code, email], (error) => {
+            pool.query('UPDATE users SET reset_code = ? WHERE email = ?', [code, email], (error) => {
                 if (error) {
                     console.log('Error updating reset code:', error);
                     return reject('Error updating reset code');
