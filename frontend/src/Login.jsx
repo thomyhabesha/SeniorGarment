@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Login.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -87,7 +87,7 @@ const Login = () => {
           {/* Display error message if any */}
           {error && <p className="error-message">{error}</p>}
 
-          <a href="#" className="forgotPassword">Forgot password?</a>
+          <Link to="/forgotPassword" className="forgotPassword">Forgot password?</Link>
         </div>
       </div>
     </div>

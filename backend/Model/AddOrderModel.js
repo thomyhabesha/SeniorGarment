@@ -1,4 +1,4 @@
-const db = require('../Config/db');
+const db = require('../Config/Db');
 
 const Order = {
   create: (name, quantity, category, callback) => {
