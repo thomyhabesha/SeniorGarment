@@ -45,3 +45,9 @@
       
     }
 
+.navto-login{
+  background-color: blue;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+}

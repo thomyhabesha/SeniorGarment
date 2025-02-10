@@ -1,6 +1,4 @@
-// controllers/VerifyCodeController.js
-
-const VerifyCode = require('../models/VerifyCode');
+const VerifyCode = require('../Model/VerifyCodeModel');
 
 const VerifyCodeController = {
   async verifyCode(req, res) {
@@ -9,9 +7,9 @@ const VerifyCodeController = {
       const message = await VerifyCode.verifyCode(email, code);
       res.status(200).json({ message });
     } catch (error) {
-      console.error('Error verifying code:', error.message);
-      if (error.message === 'Invalid code') {
-        res.status(400).json({ error: 'Invalid code' });
+      console.error('Error verifying code:', error);
+      if (error === 'Invalid code or email') {
+        res.status(400).json({ error: 'Invalid code or email' });
       } else {
         res.status(500).json({ error: 'Internal Server Error' });
       }
@@ -20,4 +18,3 @@ const VerifyCodeController = {
 };
 
 module.exports = VerifyCodeController;
-

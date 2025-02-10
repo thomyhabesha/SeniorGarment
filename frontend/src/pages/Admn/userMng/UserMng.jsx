@@ -70,7 +70,6 @@ function UserMng() {
       <main className="main-content">
         <DashHead heading="User Management" />
         <section className="container-section">
-          <h3>Modify User</h3>
           <div className="table-container">
             <table className="user-table">
               <thead>

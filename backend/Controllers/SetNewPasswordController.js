@@ -1,13 +1,17 @@
-// controllers/SetNewPasswordController.js
 const { updateUserPassword } = require('../Model/SetNewPasswordModel');
 
-exports.setNewPassword = async (req, res) => {
-  const { email, newPassword } = req.body;
-  try {
-    await updateUserPassword(email, newPassword);
-    res.status(200).send('Password reset successful');
-  } catch (error) {
-    console.error('Error resetting password:', error);
-    res.status(500).send('Error resetting password');
+const SetNewPasswordController = {
+  setNewPassword: (req, res) => {
+    const { email, newPassword, role } = req.body;
+    updateUserPassword(email, newPassword, role, (err, message) => {
+      if (err) {
+        console.error('Error resetting password:', err);
+        return res.status(500).send('Error resetting password');  // Send error response
+      }
+      console.log(message);
+      return res.status(200).send(message);  // Send success response with message
+    });
   }
 };
+
+module.exports = SetNewPasswordController;

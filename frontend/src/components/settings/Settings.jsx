@@ -39,7 +39,7 @@ function Settings({ role }) {
       setMessage('Failed updating settings: ' + error.response?.data?.message || error.message);
       setMessageType('error');
     } finally {
-      setLoading(false); // Stop loading
+      setLoading(false); 
     }
   };
 

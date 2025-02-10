@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import jsPDF from "jspdf";
-import "jspdf-autotable"; // Import the autoTable plugin
+import "jspdf-autotable";
 import "./Dashboard.css";
 import Sidebar from "../../../components/sidebar/Sidebar";
 import DashHead from "../../../components/dashHead/DashHead";
 
 function DashboardAdmin() {
   const [searchTerm, setSearchTerm] = useState('');
-  const [users, setUsers] = useState([]); // State to hold user data
-  const [error, setError] = useState(null); // Error state
-  // Fetch users from the backend
+  const [users, setUsers] = useState([]); 
+  const [error, setError] = useState(null); 
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/getusers");
-        setUsers(response.data); // Set fetched user data
+        setUsers(response.data); 
       } catch (err) {
         console.error("Error fetching users:", err);
         setError("Failed to fetch users.");
@@ -28,13 +28,13 @@ function DashboardAdmin() {
   const generatePDF = () => {
     const doc = new jsPDF();
 
-    // Title
+   
     doc.text("Registered Users", 14, 15);
 
-    // Define table column titles
+    
     const tableColumn = ["ID", "Name", "Email", "Role", "Contact"];
     
-    // Map data into rows
+    
     const tableRows = users.map(user => [
       user.UserID,
       `${user.Fname} ${user.Lname}`,
@@ -43,14 +43,14 @@ function DashboardAdmin() {
       user.contact_no
     ]);
 
-    // Add table to PDF
+    
     doc.autoTable({
       head: [tableColumn],
       body: tableRows,
       startY: 20
     });
 
-    // Save the PDF
+    
     doc.save("registered_users.pdf");
   };
 

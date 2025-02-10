@@ -7,7 +7,7 @@ import { FaUser } from "react-icons/fa";
 import { IoIosLogOut } from "react-icons/io";
 import { TiFlowMerge } from "react-icons/ti";
 import { RiCalendarScheduleLine } from "react-icons/ri";
-import { MdOutlineReport } from "react-icons/md";
+import { RxActivityLog } from "react-icons/rx";
 import { GiTalk } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
@@ -15,21 +15,21 @@ import "./Sidebar.css";
 import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ user }) => {
-  // Retrieve and parse user data from localStorage
+  
   const userinfo = JSON.parse(localStorage.getItem("user")) || {};
  const navigate = useNavigate();
-  // State hooks for user data
+ 
   const [userfname, setFname] = useState(userinfo.Fname || "");
   const [userlname, setLname] = useState(userinfo.Lname || "");
-  const [userrole, setRole] = useState(user || ""); // Fallback role
+  const [userrole, setRole] = useState(user || ""); 
 
 
   const logout =()=>{
     localStorage.clear('user');
-    navigate('/'); // Store user data in localStorage
+    navigate('/'); 
 
   }
-  // Menu items for each user role
+ 
   const menuItems = {
     productionmgr: [
       { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardProdction" },
@@ -42,6 +42,7 @@ const Sidebar = ({ user }) => {
       { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardAdmin" },
       { icon: <IoMdAdd />, label: "Register", link: "/Register" },
       { icon: <MdModeEditOutline />, label: "User Management", link: "/UserMng" },
+      { icon: <RxActivityLog />, label: "Activity logs", link: "/activityLogs" },
       { icon: <CiSettings />, label: "Settings", link: "/AdminSettings" },
     ],
     inventory: [

@@ -131,3 +131,18 @@
   margin-left: 50px;
 
 }
+
+.navto-login{
+  background-color: #0364cb;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+
+}
+.reset-div > p:last-child{
+  padding: 4px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap:6px
+}

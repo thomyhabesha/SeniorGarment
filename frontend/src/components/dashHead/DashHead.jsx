@@ -5,15 +5,15 @@ import AnalyticImage from '../../assets/garmentImg/Increase.png'
 const DashHead=({heading, user})=>{
 
 
-  const [users, setUsers] = useState([]); // State to hold user data
-  const [error, setError] = useState(null); // Error state
+  const [users, setUsers] = useState([]); 
+  const [error, setError] = useState(null); 
 
-  // Fetch users from the backend
+  
   useEffect(() => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get("http://localhost:5000/api/getusers");
-        setUsers(response.data); // Set fetched user data
+        setUsers(response.data); 
       } catch (err) {
         console.error("Error fetching users:", err);
         setError("Failed to fetch users.");

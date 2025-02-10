@@ -6,26 +6,26 @@ import { useNavigate, Link } from 'react-router-dom';
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('admin'); // Default role
-  const [error, setError] = useState(''); // Error state for displaying error messages
+  const [role, setRole] = useState('admin'); 
+  const [error, setError] = useState(''); 
   const navigate = useNavigate();
 
-  // Handle form submission
+  
   const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Logging in with:', username, password, role);  // Debugging line
+    console.log('Logging in with:', username, password, role);  
     
     const loginData = { username, password, role };
   
     try {
       const response = await axios.post('http://localhost:5000/api/login', loginData);
       if (response.data.message) {
-        // Store user data in localStorage
+       
         const { Fname, Lname, email,user_role } = response.data.user;
         const userData = { Fname, Lname, email, user_role };
-        localStorage.setItem('user', JSON.stringify(userData)); // Store user data in localStorage
+        localStorage.setItem('user', JSON.stringify(userData)); 
 
-        // Navigate based on the role
+        
         if (response.data.user.user_role === 'Admin') {
           navigate('/DashboardAdmin');
         } else if (response.data.user.user_role === 'Production manager') {
@@ -34,12 +34,12 @@ const Login = () => {
           navigate('/DashboardInventory');
         }
       } else {
-        // If the login fails, set the error state
+        
         setError(response.data.message);
       }
     } catch (error) {
       console.error('Error logging in:', error);
-      setError('Invalid credentials'); // Display error in the component
+      setError('Invalid credentials'); 
     }
   };
   

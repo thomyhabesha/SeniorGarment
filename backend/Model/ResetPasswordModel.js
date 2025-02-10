@@ -1,11 +1,9 @@
-const { pool } = require('../config/db');
+const connection = require('../Config/Db');
 const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-        // user: 'tafethomas07@gmail.com',
-        // pass: 'bmme sddv gpxh yxxn'
         user: 'tafethomas07@gmail.com',
         pass: 'bmme sddv gpxh yxxn'
     }
@@ -13,7 +11,7 @@ const transporter = nodemailer.createTransport({
 
 const generateCode = () => Math.floor(100000 + Math.random() * 900000);
 
-const sendEmail = (email, code) => {
+const sendEmail = (email, code, callback) => {
     const mailOptions = {
         from: 'tafethomas07@gmail.com',
         to: email,
@@ -21,42 +19,40 @@ const sendEmail = (email, code) => {
         text: `Your password reset code is: ${code}`
     };
 
-    return new Promise((resolve, reject) => {
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.log(error);
-                reject(error);
-            } else {
-                console.log('Email sent: ' + info.response);
-                resolve(info);
-            }
-        });
+    transporter.sendMail(mailOptions, (error, info) => {
+        if (error) {
+            console.error('Error sending email:', error);
+            return callback(error);
+        }
+        console.log('Email sent:', info.response);
+        callback(null, info);
     });
 };
 
-const resetPassword = (email) => {
+const resetPassword = (email, callback) => {
     const code = generateCode();
-
-    return new Promise((resolve, reject) => {
-        pool.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
+    
+    connection.query('SELECT * FROM users WHERE email = ?', [email], (error, results) => {
+        if (error) {
+            console.error('Error checking email existence:', error);
+            return callback('Error checking email existence');
+        }
+        
+        if (results.length === 0) {
+            return callback('Email does not exist');
+        }
+        
+        connection.query('UPDATE users SET reset_code = ? WHERE email = ?', [code, email], (error) => {
             if (error) {
-                console.log('Error checking email existence:', error);
-                return reject('Error checking email existence');
+                console.error('Error updating reset code:', error);
+                return callback('Error updating reset code');
             }
-
-            if (results.length === 0) {
-                return reject('Email does not exist');
-            }
-
-            pool.query('UPDATE users SET reset_code = ? WHERE email = ?', [code, email], (error) => {
-                if (error) {
-                    console.log('Error updating reset code:', error);
-                    return reject('Error updating reset code');
+            
+            sendEmail(email, code, (emailError) => {
+                if (emailError) {
+                    return callback('Error sending email');
                 }
-
-                sendEmail(email, code)
-                    .then(() => resolve('Code sent successfully'))
-                    .catch(reject);
+                callback(null, 'Code sent successfully');
             });
         });
     });

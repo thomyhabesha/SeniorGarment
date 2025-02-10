@@ -27,7 +27,8 @@ const AddOrderroute = require('./Routes/AddOrderroute');
 const GetResourceCountRoute = require('./Routes/GetResourceCountRoute');
 const RestePsswordRoute = require('./Routes/RestePsswordRoute');
 const SetNewPasswordRoute = require('./Routes/SetNewPasswordRoute');
-const VerifyCode = require('./Routes/VerifyCode');
+const VerifyCode = require('./Routes/VerifyCodeRoutes');
+const GetActivityLogsRoutes = require('./Routes/GetActivityLogsRoutes');
 
 
 
@@ -60,6 +61,9 @@ app.use('/api', GetResourceCountRoute);
 app.use('/api', RestePsswordRoute); 
 app.use('/api', SetNewPasswordRoute); 
 app.use('/api', VerifyCode); 
+app.use('/api', GetActivityLogsRoutes); 
+
+
 
 
 

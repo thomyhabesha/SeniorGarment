@@ -12,6 +12,7 @@ import UserMng from "./pages/Admn/userMng/UserMng";
 import AdminSettings from "./pages/Admn/settings/AdminSettings";
 import ProdSettings from "./pages/productionMgr/settings/ProdSettings";
 import ProductionSchedule from "./pages/productionMgr/productionSchedule/ProductionSchedule";
+import ActivityLogs from "./pages/Admn/activitylogs/ActivityLogs";
 import ForgotPassword from "./components/forgetpassword/ForgotPassword";
 import './App.css';
 
@@ -31,6 +32,7 @@ function App() {
         <Route path="/AdminSettings" element={<AdminSettings />} />
         <Route path="/ProdSettings" element={<ProdSettings />} />
         <Route path="/ProductionSchedule" element={<ProductionSchedule />} />
+        <Route path="/activityLogs" element={<ActivityLogs />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
       </Routes>
     </Router>
