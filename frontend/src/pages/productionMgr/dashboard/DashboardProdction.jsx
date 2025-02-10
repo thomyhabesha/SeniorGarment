@@ -104,13 +104,11 @@ const DashboardProdction = () => {
         Download as PDF
       </button>
       </div>
-        <section className="container-section prodcntainer-section">
          <div className="chartTop">
             <Bar ref={chartRef} data={data} options={options} />
          </div>
           
             
-        </section>
       </main>
     </div>
   );

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import AnalyticImage from '../../assets/garmentImg/Increase.png'
 import axios from 'axios';
 
 const SystemMetrics = () => {
@@ -15,9 +16,22 @@ const SystemMetrics = () => {
   }, []);
 
   return (
-    <div>
-      <h3>System Uptime: {uptime ? `${uptime} seconds` : 'Loading...'}</h3>
-    </div>
+
+    <div className="DashboardHead activlog">
+<div className="DashboardHead1">
+        <div className="user-count-card-cont">
+
+        <div className="user-count-card">
+          <h3>{uptime ? `${uptime} sec` : 'Loading...'}</h3>
+          <p>System Uptime</p>
+         
+        </div>
+        <img src={AnalyticImage} alt='' /> 
+        </div>
+        </div>
+        </div>
+       
+
   );
 };
 

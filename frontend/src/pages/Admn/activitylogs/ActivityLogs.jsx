@@ -33,6 +33,7 @@ function ActivityLogs() {
       <main className="main-content">
         <DashHead heading="Activity logs" />
         <section className="container-section">
+            <SystemMetrics/>
           <div className="table-container">
             <table className="user-table">
               <thead>

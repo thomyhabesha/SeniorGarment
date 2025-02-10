@@ -212,15 +212,14 @@ function ProductionSchedule() {
             </div>
             
 
-          </section>
           <div  className='createBtn'>
 
               <button onClick={() => setPopup2(true)}>Create Task</button>
           </div>
+          </section>
 
           {popup && (
-            <div className="popup">
-              <form>
+              <form className="popup">
                 <label>
                   Task:
                   <input type="text" value={formData.Task} readOnly />
@@ -271,7 +270,6 @@ function ProductionSchedule() {
                   Cancel
                 </button>
               </form>
-            </div>
           )}
 
 

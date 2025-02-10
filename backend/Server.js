@@ -65,6 +65,13 @@ app.use('/api', GetActivityLogsRoutes);
 
 
 
+let startTime = Date.now();
+
+app.get('/api/uptime', (req, res) => {
+  const uptime = (Date.now() - startTime) / 1000; // Uptime in seconds
+  res.json({ uptime });
+});
+
 
 
 app.listen(port, () => {

@@ -1,6 +1,6 @@
 .prodcntainer-section{
    
-    gap:80px;
+    gap:30px;
     max-height: 450px; /* Adjust this to set the scrollable area height */
   overflow-y: auto; /* Enables vertical scrolling */
   overflow-x: hidden;
@@ -35,7 +35,7 @@
 
 /* Table Wrapper for Scrollable Body */
 .table-wrapper {
-  max-height: 420px; /* Adjust this to set the scrollable area height */
+  max-height: 440px; /* Adjust this to set the scrollable area height */
   overflow-y: auto; /* Enables vertical scrolling */
   overflow-x: hidden; /* Prevents horizontal scrolling */
  
@@ -169,23 +169,27 @@ table.productionDash td {
   
 
   .popup {
+   
+  }
+  
+  .popup form {
     position: fixed;
     top: 50%;
     left: 50%;
+    height: 90vh;
     transform: translate(-50%, -50%);
     background-color: #ffffff;
-    padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 1000;
     width: 400px;
-  }
-  
-  .popup form {
+    padding: 20px;
+    overflow-y: auto;
     display: flex;
     flex-direction: column;
     gap: 15px;
   }
+  
   
   .popup label {
     display: flex;

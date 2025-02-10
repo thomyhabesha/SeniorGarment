@@ -3,21 +3,19 @@
     height: 100vh;
   }
 .prodcntainer-section {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    height: 90%;
+    
+    height: 70%;
+    overflow: hidden;
 }
   .productionChart {
     width: 550px;
-    height: 100%;
   }
   .formHead{
     display:flex;
     gap:12px;
     align-items:center;
     justify-content:end;
-    padding:8px;
+    padding:0px;
   }
   .downloadButton{
     padding:6px 12px;
@@ -28,7 +26,8 @@
     border-radius:12px
   }
   .chartTop{
-    height:70vh
+    height:75%;
+    overflow: hidden;
   }
   .productionProgressBar {
     
@@ -39,10 +38,7 @@
     font-size: 1.3rem;
    
   }
-  .productionProgressBar2{
-    width:80%;
-    height: 60%;
-  }
+  
   /* Style for the scrollbar */
 ::-webkit-scrollbar {
     width: 10px; /* Width of the scrollbar */

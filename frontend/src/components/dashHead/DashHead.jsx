@@ -23,6 +23,7 @@ const DashHead=({heading, user})=>{
     fetchUsers();
   }, []);
 
+  
 
     return(
 <div className="DashboardHead">

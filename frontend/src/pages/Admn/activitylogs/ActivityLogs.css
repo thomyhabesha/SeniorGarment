@@ -1,6 +1,6 @@
 
 
-.table-container {
+.activlog .table-container {
     max-height: 400px; /* Set a maximum height for the container */
     overflow-y: auto; /* Enable vertical scrolling */
     border: 1px solid #ccc; /* Light gray border */
@@ -10,35 +10,35 @@
     height: 350px;
 }
 
-.user-table {
+.activlog .user-table {
     width: 100%; /* Make the table take the full width */
     border-collapse: collapse; /* Collapse borders for a cleaner look */
     font-family: 'Arial', sans-serif; /* Formal font style */
 }
 
-.user-table th, .user-table td {
+.activlog .user-table th, .activlog .user-table td {
     padding: 12px 15px; /* Increased padding for better spacing */
     text-align: left; /* Align text to the left */
     border-bottom: 1px solid #ddd; /* Add a bottom border to each row */
 }
 
-.user-table th {
+.activlog .user-table th {
     background-color: #1FA5FF;; /* Blue background for the header */
     color: white; /* White text color for the header */
     font-weight: bold; /* Bold text for header */
 }
 
-.user-table tr:nth-child(even) {
+.activlog .user-table tr:nth-child(even) {
     background-color: #f2f2f2; /* Light gray for even rows */
 }
 
-.user-table tr:hover {
+.activlog .user-table tr:hover {
     background-color: #e9ecef; /* Slightly darker gray on hover */
     cursor: pointer; /* Change cursor on hover */
 }
 
-/* UserMng.css */
-.edit-button, .remove-button {
+/* UserMng.activlog .css */
+.activlog .edit-button, .activlog .remove-button {
     margin: 0 5px;
     padding: 5px 12px;
     border: none;
@@ -47,26 +47,26 @@
     cursor: pointer;
 }
 
-.edit-button {
+.activlog .edit-button {
     background-color: #1FA5FF; /* Green */
 }
 
-.remove-button {
+.activlog .remove-button {
     background-color: #FF4545; /* Red */
 }
 
-.edit-button:hover, .remove-button:hover {
-    opacity: 0.7;
+.activlog .edit-button:hover, .activlog .remove-button:hover {
+    opacity: 0.activlog .7;
 }
 
-/* UserMng.css */
-.modal-overlay {
+/* UserMng.activlog .css */
+.activlog .modal-overlay {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.activlog .5);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,12 +75,12 @@
 
 
 
-.modal-content label {
+.activlog .modal-content label {
     display: block;
     margin-bottom: 5px;
 }
 
-.modal-content input {
+.activlog .modal-content input {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
@@ -88,7 +88,7 @@
     border-radius: 4px;
 }
 
-.update-button, .close-button {
+.activlog .update-button, .activlog .close-button {
     margin-right: 5px;
     padding: 8px 12px;
     border: none;
@@ -96,41 +96,82 @@
     cursor: pointer;
 }
 
-.update-button {
+.activlog .update-button {
     background-color: #4CAF50; /* Green */
     color: white;
 }
 
-.close-button {
+.activlog .close-button {
     background-color: #f44336; /* Red */
     color: white;
 }
 
-.update-button:hover, .close-button:hover {
-    opacity: 0.8;
+.activlog .update-button:hover, .activlog .close-button:hover {
+    opacity: 0.activlog .8;
 }
 
-.modal-content select {
+.activlog .modal-content select {
     width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
-.modal-content {
+.activlog .modal-content {
     padding: 15px 20px;
     background-color: white;
     border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.activlog .1);
 }
 
-.modal-buttons {
+.activlog .modal-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-.modal-content h4{
+.activlog .modal-content h4{
     border-bottom: 1px solid grey;
     padding-bottom:12px ;
 }
+
+.activlog .DashboardHead{
+    
+    justify-content: space-between;
+    margin: 0px;
+    
+  }
+  .activlog .DashboardHead1{
+    display: flex;
+    justify-content: start;
+    margin: 0px;
+    gap:40px;
+    width: 100%;
+  }
+.activlog .user-count-card-cont{
+    border-radius: 16px;
+    padding: 8px 10px;
+    background-color: #1FA5FF; 
+    display: flex;
+align-items: center;
+    gap:12;
+    align-self: flex-end;
+    position: relative;
+    left:70%
+  }
+
+  .activlog .user-count-card {
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .activlog .user-count-card h3 {
+    font-size: 1rem;
+    color:white;
+    align-self: flex-start;
+  }
+  
+  .activlog .user-count-card p {
+    font-size: 0.activlog .8rem;
+  }
+  
