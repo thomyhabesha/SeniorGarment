@@ -68,7 +68,7 @@ function App() {
             <Route path="/Register" element={<Register />} />
             <Route path="/UserMng" element={<UserMng />} />
             <Route path="/AdminSettings" element={<AdminSettings />} />
-            <Route path="/ProdSettings" element={<ProdSettings />} />
+            <Route path="/prodSettings" element={<ProdSettings />} />
             <Route path="/communication" element={<Communication />} />
             <Route path="/ProductionSchedule" element={<ProductionSchedule />} />
             <Route path="/activityLogs" element={<ActivityLogs />} />

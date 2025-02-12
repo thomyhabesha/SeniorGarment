@@ -60,7 +60,7 @@ const Sidebar = ({ user }) => {
       { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardInventory" },
       { icon: <CiBoxList />, label: "Defects", link: "/WasteManage" },
       { icon: <GiTalk />, label: "Communication", link: "/messageButtons" },
-      { icon: <CiSettings />, label: "Settings", link: "/#" },
+      { icon: <CiSettings />, label: "Settings", link: "/prodSettings" },
     ],
   };
 
