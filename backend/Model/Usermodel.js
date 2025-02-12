@@ -11,7 +11,6 @@ const authenticateUserByRole = (role, username, password, callback) => {
 
   
 
-  // Define query based on role
   const roleTableMap = {
     admin: 'admin',
     productionmanager: 'productionmanager',
@@ -20,7 +19,7 @@ const authenticateUserByRole = (role, username, password, callback) => {
 
   const tableName = roleTableMap[role];
   const query = `
-    SELECT u.Fname, u.Lname, u.email, u.user_role, ${tableName}.password_hash 
+    SELECT u.UserID, u.Fname, u.Lname, u.email, u.user_role, ${tableName}.password_hash 
     FROM USERS u 
     JOIN ${tableName} ON u.userID = ${tableName}.userID 
     WHERE ${tableName}.username = ?`;
@@ -42,8 +41,8 @@ const authenticateUserByRole = (role, username, password, callback) => {
 
         if (isMatch) {
           console.log('Password match successful!');
-          const { Fname, Lname, email, user_role } = results[0];
-          callback(null, { Fname, Lname, email, user_role }); // Return user data
+          const { UserID, Fname, Lname, email, user_role } = results[0];
+          callback(null, { UserID, Fname, Lname, email, user_role }); // Return user data
         } else {
           console.log('Password does not match.');
           callback('Invalid username or password', null); // Generic error for security

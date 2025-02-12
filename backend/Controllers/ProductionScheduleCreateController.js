@@ -2,8 +2,11 @@ const TaskSchedule = require('../Model/ProductionScheduleCreateModel');
 
 const TaskScheduleController = {
   createTaskSchedule: (req, res) => {
-    const { Task_name,Task_Description, Priorty, Task_Status, TeamID, StartDate, EndDate } = req.body;
+    const { Task_name, Priorty, Task_Status, TeamID, StartDate, EndDate, Task_Description } = req.body;
 
+   
+
+    
     TaskSchedule.create(
       { Task_name,Task_Description, Priorty, Task_Status, TeamID, StartDate, EndDate},
       (err, result) => {

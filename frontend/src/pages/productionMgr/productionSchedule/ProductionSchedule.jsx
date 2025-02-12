@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './ProductionSchedule.css';
 import Sidebar from '../../../components/sidebar/Sidebar';
 import DashHead from '../../../components/dashHead/DashHead';
+import axios from 'axios';
 import Settings from '../../../components/settings/Settings';
 import jsPDF from 'jspdf';
 
@@ -13,6 +14,7 @@ function ProductionSchedule() {
   const [popup2, setPopup2] = useState(false);
   const [createStatusPopup, setcreateStatusPopup] = useState(false);
   const [editStatusPopup, setEditStatusPopup] = useState(false);
+  const [loading, setloading] = useState(false);
   const [editStatusMessage, setEditStatusMessage] = useState('');
   const [createStatusMessage, setcreateStatusMessage] = useState('');
   const [data, setData] = useState([]);
@@ -36,12 +38,15 @@ function ProductionSchedule() {
     EndingTime: '',
   });
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/production-schedule')
-      .then((response) => response.json())
-      .then((fetchedData) => setData(fetchedData))
-      .catch((error) => console.error('Error fetching production schedule:', error));
-  }, []);
+
+useEffect(() => {
+  axios.get('http://localhost:5000/api/production-schedule')
+    .then((response) => {
+      setData(response.data); // Set state with fetched data
+    })
+    .catch((error) => console.error('Error fetching production schedule:', error));
+}, []);
+
 
   const handleEditClick = (task) => {
     setSelectedTask(task);
@@ -56,75 +61,66 @@ function ProductionSchedule() {
     setPopup(true);
   };
 
-  const handleSubmit = () => {
-    fetch(`http://localhost:5000/api/production-scheduleUpdate/${selectedTask.Task}`, {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
+
+const handleSubmit = () => {
+  setloading(true);
+
+  axios.put(`http://localhost:5000/api/production-scheduleUpdate/${selectedTask.Task}`, formData)
+    .then(() => {
+      setloading(false);
+      setPopup2(false);
+      setEditStatusMessage('Task updated successfully!');
+      setEditStatusPopup(true);
+
+      // Refresh the data
+      return axios.get('http://localhost:5000/api/production-schedule');
     })
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to update task');
-        return response.json();
-      })
-      .then(() => {
-        setPopup2(false);
-        setEditStatusMessage('Task updated successfully!');
-        setEditStatusPopup(true);
-        // Refresh the data
-        return fetch('http://localhost:5000/api/production-schedule')
-          .then((response) => response.json())
-          .then((fetchedData) => setData(fetchedData));
-      })
-      .catch(() => {
-        setPopup2(false);
-        setEditStatusMessage('Failed to update task. Please try again.');
-        setEditStatusPopup(true);
-      });
-  };
+    .then((response) => {
+      setData(response.data);
+    })
+    .catch(() => {
+      setloading(false);
+      setPopup2(false);
+      setEditStatusMessage('Failed to update task. Please try again.');
+      setEditStatusPopup(true);
+    });
+};
 
 
 
 
 
- 
-  useEffect(() => {
-    // Fetch teams
-    fetch('http://localhost:5000/api/teams')
-      .then((response) => response.json())
-      .then((data) => {
-          setTeams(data);    // Set the state with fetched data
-          console.log(data); // Log data
-      })
-      .catch((error) => console.error('Error fetching teams:', error));
-  }, []);
+
+useEffect(() => {
+  axios.get('http://localhost:5000/api/teams')
+    .then((response) => {
+      setTeams(response.data); // Set the state with fetched data
+      console.log(response.data); // Log data
+    })
+    .catch((error) => console.error('Error fetching teams:', error));
+}, []);
+
   
 
-  const handleSubmitCreateTask = () => {
-    fetch('http://localhost:5000/api/create-task-schedule', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formDataCreate),
+
+const handleSubmitCreateTask = () => {
+  setloading(true);
+
+  axios.post('http://localhost:5000/api/create-task-schedule', formDataCreate)
+    .then((response) => {
+      setloading(false);
+      setPopup2(false);
+      setcreateStatusMessage('Task created successfully!');
+      setcreateStatusPopup(true);
     })
-      .then((response) => {
-        if (!response.ok) throw new Error('Failed to create task');
-        return response.json();
-      })
-      .then(() => {
-        setPopup2(false);
-        setcreateStatusMessage('Task created successfully!')
-        setcreateStatusPopup(true);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-        setPopup2(false);
-        setcreateStatusMessage('Failed to create task!')
-        setcreateStatusPopup(true);
-      });
-  };
+    .catch((error) => {
+      setloading(false);
+      console.error('Error:', error);
+      setPopup2(false);
+      setcreateStatusMessage('Failed to create task!');
+      setcreateStatusPopup(true);
+    });
+};
 
 
   const generatePDF = () => {
@@ -264,7 +260,7 @@ function ProductionSchedule() {
                   />
                 </label>
                 <button type="button" onClick={handleSubmit}>
-                  Save
+                  {loading ? 'saving...': 'save'}
                 </button>
                 <button type="button" onClick={() => setPopup(false)}>
                   Cancel
@@ -274,11 +270,31 @@ function ProductionSchedule() {
 
 
 {popup2 && (
-  <div className="popup">
-    <form>
+    <form className="popup">
       
       <label>
-        Priorty:
+        Task name:
+        <select
+          value={formDataCreate.Task_name}
+          onChange={(e) => setformDataCreate({ ...formDataCreate, Task_name: e.target.value })}
+        >
+          <option value="Fabric Inspection">Fabric Inspection</option>
+          <option value="Stitching Assembly">Stitching Assembly</option>
+          <option value="Quality Check">Quality Check</option>
+          <option value="Packaging">Packaging</option>
+          <option value="Button Attachment">Button Attachment</option>
+          <option value="Fabric Dyeing">Fabric Dyeing</option>
+          <option value="Pattern Making">Pattern Making</option>
+          <option value="Needling">Needling</option>
+          <option value="Thread Rolls">Thread Rolls</option>
+          <option value="Cutting Machine">Cutting Machine</option>
+          <option value="Stitching Machine">Stitching Machine</option>
+        </select>
+      </label>
+
+
+      <label>
+        Priority:
         <select
           value={formDataCreate.Priorty}
           onChange={(e) => setformDataCreate({ ...formDataCreate, Priorty: e.target.value })}
@@ -338,13 +354,12 @@ function ProductionSchedule() {
                 />
               </label>
       <button type="button" onClick={handleSubmitCreateTask}>
-        Save
+        {loading ? 'saving...': 'save'}
       </button>
       <button type="button" onClick={() => setPopup2(false)}>
         Cancel
       </button>
     </form>
-  </div>
 )}
           {editStatusPopup && (
             <div className="status-popup">

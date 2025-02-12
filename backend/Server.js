@@ -29,6 +29,7 @@ const RestePsswordRoute = require('./Routes/RestePsswordRoute');
 const SetNewPasswordRoute = require('./Routes/SetNewPasswordRoute');
 const VerifyCode = require('./Routes/VerifyCodeRoutes');
 const GetActivityLogsRoutes = require('./Routes/GetActivityLogsRoutes');
+const MessagesRoute = require('./Routes/MessagesRoute');
 
 
 
@@ -62,6 +63,7 @@ app.use('/api', RestePsswordRoute);
 app.use('/api', SetNewPasswordRoute); 
 app.use('/api', VerifyCode); 
 app.use('/api', GetActivityLogsRoutes); 
+app.use('/api', MessagesRoute); 
 
 
 

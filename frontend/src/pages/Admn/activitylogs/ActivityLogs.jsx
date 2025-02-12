@@ -46,8 +46,8 @@ function ActivityLogs() {
                 </tr>
               </thead>
               <tbody>
-                {activitylog.map(activity => (
-                  <tr key={activity.UserID}>
+                {activitylog.map((activity, index) => (
+                  <tr key={index}>
                     <td>{activity.log_id}</td>
                     <td>{activity.action_type}</td>
                     <td>{activity.UserID} </td>

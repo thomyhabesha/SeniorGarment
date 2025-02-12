@@ -16,16 +16,26 @@ import { useNavigate } from 'react-router-dom';
 
 const Sidebar = ({ user }) => {
   
-  const userinfo = JSON.parse(localStorage.getItem("user")) || {};
+  const userinfo = JSON.parse(sessionStorage.getItem("user")) || {};
+ 
  const navigate = useNavigate();
  
   const [userfname, setFname] = useState(userinfo.Fname || "");
   const [userlname, setLname] = useState(userinfo.Lname || "");
-  const [userrole, setRole] = useState(user || ""); 
+  const [userrole, setRole] = useState(user?.toLowerCase() || ""); 
+
+
+  useEffect(() => {
+    console.log("Updated userrole:", user.toLowerCase());
+    setRole(user.toLowerCase());
+  }, [user]);
+  
+  console.log("Sidebar userrole:", userrole);
 
 
   const logout =()=>{
-    localStorage.clear('user');
+    sessionStorage.clear('user');
+    
     navigate('/'); 
 
   }
@@ -35,19 +45,21 @@ const Sidebar = ({ user }) => {
       { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardProdction" },
       { icon: <RiCalendarScheduleLine />, label: "Production Schedule", link: "/ProductionSchedule" },
       { icon: <TiFlowMerge />, label: "Workflow", link: "/WorkflowVisualize" },
-      { icon: <GiTalk />, label: "Communication", link: "/Communication" },
+      { icon: <GiTalk />, label: "Communication", link: "/messageButtons" },
       { icon: <CiSettings />, label: "Settings", link: "/ProdSettings" },
     ],
     admin: [
       { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardAdmin" },
       { icon: <IoMdAdd />, label: "Register", link: "/Register" },
       { icon: <MdModeEditOutline />, label: "User Management", link: "/UserMng" },
+      { icon: <GiTalk />, label: "Communication", link: "/messageButtons" },
       { icon: <RxActivityLog />, label: "Activity logs", link: "/activityLogs" },
       { icon: <CiSettings />, label: "Settings", link: "/AdminSettings" },
     ],
     inventory: [
       { icon: <AiOutlineDashboard />, label: "Dashboard", link: "/DashboardInventory" },
       { icon: <CiBoxList />, label: "Defects", link: "/WasteManage" },
+      { icon: <GiTalk />, label: "Communication", link: "/messageButtons" },
       { icon: <CiSettings />, label: "Settings", link: "/#" },
     ],
   };

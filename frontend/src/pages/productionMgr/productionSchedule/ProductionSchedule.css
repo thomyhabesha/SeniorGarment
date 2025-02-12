@@ -172,7 +172,7 @@ table.productionDash td {
    
   }
   
-  .popup form {
+  .popup  {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -197,6 +197,7 @@ table.productionDash td {
     font-weight: bold;
     font-size: 14px;
     color: #333333;
+    width: 100%;
   }
   
   .popup input {
@@ -212,6 +213,7 @@ table.productionDash td {
     border-radius: 5px;
     cursor: pointer;
     font-size: 14px;
+    width: 100%;
   }
   
   .popup button[type='button'] {

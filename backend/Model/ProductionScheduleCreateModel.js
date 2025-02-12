@@ -2,7 +2,7 @@ const db = require('../Config/Db');
 
 const TaskSchedule = {
   create: (data, callback) => {
-    const { Task_name, Task_Description, Priorty, Task_Status, TeamID, StartDate, EndDate } = data;
+    const { Task_name, Priorty, Task_Status, TeamID, StartDate, EndDate, Task_Description } = data;
 const PRO_ManagerID=1;
     // First, insert the task into the Task table with current date and time
     const taskQuery = `

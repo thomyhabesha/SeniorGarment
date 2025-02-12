@@ -1,0 +1,79 @@
+/* Communication Component Styles */
+.communication-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 750px;
+    margin: auto;
+    height: 75vh;
+    overflow-y: auto;
+    border: 1px solid #2f1313;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .messages-heading {
+    font-size: 1.3rem;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  
+  .messages-area {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    padding: 0px 10px;
+    background-color: #fff;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  
+  .sent-message {
+    background-color: #d1ffd1;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    align-self: flex-end;
+   font-size: 0.9rem;  
+}
+
+.received-message {
+      font-size: 0.9rem;  
+    background-color: #f0f0f0;
+    padding: 8px;
+    margin: 5px 0;
+    border-radius: 5px;
+    align-self: flex-start;
+  }
+  
+  .message-input-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .message-input {
+    padding: 10px;
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    resize: none;
+    height: 100px;
+  }
+  
+  .send-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .send-button:hover {
+    background-color: #45a049;
+  }
+  

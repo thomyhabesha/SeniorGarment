@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Login.css';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
@@ -10,6 +10,21 @@ const Login = () => {
   const [error, setError] = useState(''); 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const user = sessionStorage.getItem("user");
+  
+    if (user) {
+      const parsedUser = JSON.parse(user); 
+  
+      if (parsedUser.user_role === 'Admin') {
+        navigate('/DashboardAdmin', { replace: true });
+      } else if (parsedUser.user_role === 'Production manager') {
+        navigate('/DashboardProdction', { replace: true });
+      } else if (parsedUser.user_role === 'Inventory manager') {
+        navigate('/DashboardInventory', { replace: true });
+      }
+    }
+  }, []);
   
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -20,21 +35,19 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:5000/api/login', loginData);
       if (response.data.message) {
+        const { UserID, Fname, Lname, email, user_role  } = response.data.user;
+        const userData = { UserID, Fname, Lname, email, user_role , loginTime: Date.now() }; // Store login time
        
-        const { Fname, Lname, email,user_role } = response.data.user;
-        const userData = { Fname, Lname, email, user_role };
-        localStorage.setItem('user', JSON.stringify(userData)); 
-
-        
+        sessionStorage.setItem('user', JSON.stringify(userData)); 
+         console.log("userData.UserID: "+userData.UserID)
         if (response.data.user.user_role === 'Admin') {
-          navigate('/DashboardAdmin');
+          navigate('/DashboardAdmin', { replace: true }); 
         } else if (response.data.user.user_role === 'Production manager') {
-          navigate('/DashboardProdction');
+          navigate('/DashboardProdction', { replace: true }); 
         } else if (response.data.user.user_role === 'Inventory manager') {
-          navigate('/DashboardInventory');
+          navigate('/DashboardInventory', { replace: true }); 
         }
       } else {
-        
         setError(response.data.message);
       }
     } catch (error) {
@@ -43,7 +56,6 @@ const Login = () => {
     }
   };
   
-
   return (
     <div className="container">
       <div className="overlay">
@@ -67,8 +79,6 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-
-            {/* Dropdown to select role */}
             <select
               className="input"
               value={role}
@@ -78,15 +88,11 @@ const Login = () => {
               <option value="productionmanager">Production Manager</option>
               <option value="inventorymanager">Inventory Manager</option>
             </select>
-
             <button type="submit" className="button">
               Login
             </button>
           </form>
-
-          {/* Display error message if any */}
           {error && <p className="error-message">{error}</p>}
-
           <Link to="/forgotPassword" className="forgotPassword">Forgot password?</Link>
         </div>
       </div>
